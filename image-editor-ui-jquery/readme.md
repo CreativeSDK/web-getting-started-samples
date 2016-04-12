@@ -2,19 +2,22 @@
 
 This is an example of using the Creative SDK for web with jQuery.
 
-## Running this repo locally
+## How to use
 
-1. Fork the main repo
+Just follow the steps below.
 
-	xyz
+### In your browser
 
-1. Prep the app to run
+1. [Register a new app for the Creative SDK](https://creativesdk.adobe.com/myapps.html)
+2. Note your Client ID. You will need it soon.
 
-	After cloning the main repo, `cd` into the `image-editor-ui-jquery` directory, and do the following:
+### In your local development environment
 
-	1. Run `npm install` (for Bootstrap and jQuery)
-	1. Go to [creativesdk.adobe.com](https://creativesdk.adobe.com/) and get your API key on the "My Apps" page
-	1. Put your key in `script.js`
+1. `git clone` [the parent repo](https://github.com/CreativeSDK/web-getting-started-samples)
+1. `cd` into this subdirectory
+1. Run `npm install` (for Bootstrap and jQuery)
+1. Put your Client ID in `script.js`
+1. Run the app
 
 ## Learn more
 
