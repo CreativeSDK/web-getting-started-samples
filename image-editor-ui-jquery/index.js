@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-	var originalImageSrc = $('#editiable-image').attr('src');
+	var originalImageSrc = $('#editable-image').attr('src');
 	var currentImage; // assigned when the Edit button is clicked
 
 	// Image Editor configuration
@@ -31,4 +31,14 @@ $(document).ready(function() {
 		});
 	});
 
+	// Reset
+	$('#reset-image-button').click(function() {
+
+		if ($('#editable-image').attr('src') === originalImageSrc) {
+			alert('Nothing to reset.');
+		}
+		else {
+			$('#editable-image').attr('src', originalImageSrc);
+		}
+	});
 });
