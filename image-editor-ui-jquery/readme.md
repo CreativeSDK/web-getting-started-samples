@@ -1,4 +1,4 @@
-# The Creative SDK for web: jQuery example
+# Web (jQuery): Image Editor UI
 
 This is an example of using the Creative SDK for web with jQuery.
 
