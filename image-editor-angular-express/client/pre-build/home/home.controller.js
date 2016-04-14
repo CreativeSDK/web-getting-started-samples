@@ -1,14 +1,20 @@
 app.controller('HomeController', function($scope, $http, HomeFactory) {
   
-  $scope.msgFromScope = "...And I'm a message from the HomeController scope, just so you know that I work!";
+  	// Image editor data
+	$scope.imageId = "editable-image";
+	$scope.imageEditor;
 
-  $scope.getCreativeSdkApiKey = function() {
-  	HomeFactory.getCreativeSdkApiKey()
-  		.then(function(key) {
-  			$scope.key = key;
-  		});
-  }
+	// Image data
+	$scope.originalImageSrc = "kyoto.jpg";
+	$scope.currentImageSrc = $scope.originalImageSrc;
 
-  $scope.getCreativeSdkApiKey();
+	$scope.getCreativeSdkApiKey = function() {
+  		HomeFactory.getCreativeSdkApiKey()
+  			.then(function(key) {
+  				$scope.key = key;
+  			});
+  	}
+
+	$scope.getCreativeSdkApiKey();
 
 });
