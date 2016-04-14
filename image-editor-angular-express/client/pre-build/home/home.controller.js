@@ -12,14 +12,6 @@ app.controller('HomeController', function($scope, $http, HomeFactory) {
 		$scope.getImageEditor();
 	});
 
-
-	$scope.getCreativeSdkApiKey = function() {
-  		HomeFactory.getCreativeSdkApiKey()
-  			.then(function(key) {
-  				$scope.key = key;
-  			});
-  	}
-
   	$scope.getImageEditor = function() {
   		HomeFactory.getCreativeSdkApiKey()
   			.then(function(key) {
