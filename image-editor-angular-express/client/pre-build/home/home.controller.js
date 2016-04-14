@@ -15,6 +15,4 @@ app.controller('HomeController', function($scope, $http, HomeFactory) {
   			});
   	}
 
-	$scope.getCreativeSdkApiKey();
-
 });
