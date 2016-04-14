@@ -50,4 +50,13 @@ app.controller('HomeController', function($scope, $http, HomeFactory) {
 		}
 	}
 
+	$scope.resetImage = function() {
+		if ($scope.currentImageSrc === $scope.originalImageSrc) {
+			alert("Nothing to reset.");
+		}
+		else {
+			$scope.currentImageSrc = $scope.originalImageSrc;
+		}
+	}
+
 });
