@@ -1,6 +1,13 @@
 #home {
-  blockquote {
-    font-size: 14px;
-    font-style: italic;
+  .button-panel {
+		margin-bottom: 10px;
+	}
+
+  .btn {
+    border-radius: 0;
   }
+
+	img {
+		margin: 0 auto;
+	}
 }
