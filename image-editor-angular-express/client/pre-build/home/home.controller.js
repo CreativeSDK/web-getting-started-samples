@@ -8,10 +8,35 @@ app.controller('HomeController', function($scope, $http, HomeFactory) {
 	$scope.originalImageSrc = "kyoto.jpg";
 	$scope.currentImageSrc = $scope.originalImageSrc;
 
+	$scope.$on('$stateChangeSuccess', function() {
+		$scope.getImageEditor();
+	});
+
+
 	$scope.getCreativeSdkApiKey = function() {
   		HomeFactory.getCreativeSdkApiKey()
   			.then(function(key) {
   				$scope.key = key;
+  			});
+  	}
+
+  	$scope.getImageEditor = function() {
+  		HomeFactory.getCreativeSdkApiKey()
+  			.then(function(key) {
+  				$scope.imageEditor = new Aviary.Feather({
+  					apiKey: key,
+  					onSave: function(imageID, newURL) {
+			            $scope.currentImageSrc = newURL;
+			            $scope.imageEditor.close();
+			            $scope.$digest();
+			            console.log(newURL);
+			        },
+			        onError: function(errorObj) {
+			            console.log(errorObj.code);
+			            console.log(errorObj.message);
+			            console.log(errorObj.args);
+			        }
+  				})
   			});
   	}
 
