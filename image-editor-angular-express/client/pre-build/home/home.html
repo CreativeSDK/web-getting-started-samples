@@ -1,0 +1,39 @@
+<section id="home">
+
+	<div class="row">
+		<div class="col-md-12">
+			<h1>Creative SDK Image Editor: Angular and Express</h1>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-2">
+			<div class="row">
+				<div class="col-md-12">
+					<button 
+						id="edit-image-button" 
+						class="btn btn-primary btn-block button-panel"
+						ng-click="launchEditor()">
+						Edit Image
+					</button>
+				</div>
+
+				<div class="col-md-12">
+					<button 
+						id="reset-image-button" 
+						class="btn btn-warning btn-block button-panel"
+						ng-click="resetImage()">
+						Reset Image
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-md-8">
+			<img ng-if="!loading" id="{{ imageId }}" class="img-responsive" src="{{ currentImageSrc }}"/>
+
+			<throbber ng-if="loading"></throbber>
+		</div>
+	</div>
+
+</section>
