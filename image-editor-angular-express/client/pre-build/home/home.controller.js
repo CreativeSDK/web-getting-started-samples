@@ -40,4 +40,22 @@ app.controller('HomeController', function($scope, $http, HomeFactory) {
   			});
   	}
 
+  	$scope.launchEditor = function() {
+
+		var terms = /^https?:///;
+		var isUrl = $scope.currentImageSrc.match(terms);
+		
+		if (isUrl) {
+			$scope.imageEditor.launch({
+				image: $scope.imageId,
+				url: $scope.currentImageSrc
+			});
+		}
+		else {
+			$scope.imageEditor.launch({
+				image: $scope.imageId
+			});
+		}
+	}
+
 });
