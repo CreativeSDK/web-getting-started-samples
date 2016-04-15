@@ -25,7 +25,7 @@ Just follow the steps below.
 	```
 
 	1. Add your Client ID in place of the `creativeSdkKey` string above
-	1. This class is **gitignored** so you can avoid exposing your keys in GitHub
+	1. This file is **gitignored** so you can avoid exposing your keys in GitHub
 
 1. In one terminal tab, run `gulp` and leave it running
 1. In a second terminal tab, run `npm start`
