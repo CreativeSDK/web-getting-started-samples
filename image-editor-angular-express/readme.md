@@ -16,13 +16,16 @@ Just follow the steps below.
 1. `git clone` [the parent repo](https://github.com/CreativeSDK/web-getting-started-samples)
 1. `cd` into this subdirectory
 1. Run `npm install`
-1. Make a new file named `apiKeys.js` in `/server` and add this code with your Creative SDK Client ID:
+1. Make a new file named `apiKeys.js` in `/server` with this code:
 	
 	```
 	module.exports = {
 		creativeSdkKey: "<YOUR_API_KEY>"
 	}
 	```
+
+	1. Add your Client ID in place of the `creativeSdkKey` string above
+	1. This class is **gitignored** so you can avoid exposing your keys in GitHub
 
 1. In one terminal tab, run `gulp` and leave it running
 1. In a second terminal tab, run `npm start`
