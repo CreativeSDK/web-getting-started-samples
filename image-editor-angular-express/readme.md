@@ -28,7 +28,7 @@ Just follow the steps below.
 	1. This file is **gitignored** so you can avoid exposing your keys in GitHub
 
 1. In one terminal tab, run `gulp` and leave it running
-1. In a second terminal tab, run `npm start`
+1. In a second terminal tab, run `npm start`, then load `localhost:4545` in your browser
 
 ## Learn more
 
