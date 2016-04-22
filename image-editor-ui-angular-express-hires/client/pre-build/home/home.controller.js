@@ -17,6 +17,7 @@ app.controller('HomeController', function($scope, $http, HomeFactory) {
   			.then(function(key) {
   				$scope.imageEditor = new Aviary.Feather({
   					apiKey: key,
+  					authenticationURL: "/api/auth/creativesdk",
   					onSaveButtonClicked: function() {
   						$scope.imageEditor.saveHiRes();
   						return false;
