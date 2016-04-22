@@ -1,15 +1,17 @@
-# Web (Angular and Express): Image Editor UI
+# Web (Angular and Express): Image Editor UI, High Resolution
 
-This is an example of using the Creative SDK for web with Angular and Express.
+This is an example of using the Creative SDK Image Editor for Web with Angular and Express. It shows one way to set up your client and server for **High Resolution image editing**. 
+
+_**Note:** Approval is required for High Resoltion image editing to work in the Web Image Editor. For more information about getting approval, see the [High Resolution image editing guide](https://creativesdk.adobe.com/docs/android/#/articles/highresolution/index.html)._
 
 ## How to use
 
-Just follow the steps below.
+Just follow the steps below. Note that high resolution image editing will only work if you have been approved (see above).
 
 ### In your browser
 
 1. [Register a new app for the Creative SDK](https://creativesdk.adobe.com/myapps.html)
-2. Note your Client ID. You will need it soon.
+2. Note your Client ID and Secret. You will need them soon.
 
 ### In your local development environment
 
@@ -20,11 +22,12 @@ Just follow the steps below.
 	
 	```
 	module.exports = {
-		creativeSdkKey: "<YOUR_API_KEY>"
+		creativeSdkKey: "<YOUR_API_KEY>",
+		creativeSdkSecret: "<YOUR_API_SECRET>"
 	}
 	```
 
-	1. Add your Client ID in place of the `creativeSdkKey` string above
+	1. Add your Client ID and Secret in place of the strings above
 	1. This file is **gitignored** so you can avoid exposing your keys in GitHub
 
 1. In one terminal tab, run `gulp` and leave it running
@@ -32,4 +35,4 @@ Just follow the steps below.
 
 ## Learn more
 
-Check out the [Getting started guide](https://creativesdk.adobe.com/docs/web/#/articles/gettingstarted/index.html) for configuration options and more!
+Check out the [High Resolution image editing guide](https://creativesdk.adobe.com/docs/android/#/articles/highresolution/index.html) for configuration options and more!
