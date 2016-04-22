@@ -6,8 +6,11 @@ var apiKeys = require('../../apiKeys.js');
 
 
 module.exports = {
-	creativesdk: function(req, res) {
+	creativesdkAuthObj: function(req, res) {
 		res.send(getAuthObj());
+	},
+	creativesdkKey: function(req, res) {
+		res.send(apiKeys.creativeSdkKey);
 	}
 }
 
@@ -20,7 +23,7 @@ function getAuthObj() {
         encryptionMethod: "sha1"
     };
 
-    authObj.signature = getSignature(authObj.apiKey, apiKeys.creativeSdkSecret, authObj.salt, authObj.timestamp, authObj.encryptionMethod);
+    authObj.signature = getSignature(authObj.apiKey, apiKeys.creativeSdkSecret, authObj.timestamp, authObj.salt, authObj.encryptionMethod);
 
     return authObj;
 }
@@ -33,7 +36,7 @@ function getUnixTimestamp() {
 	return (new Date()).getTime() / 1000;
 }
 
-function getSignature(key, secret, salt, timestamp, encryptionMethod) {
+function getSignature(key, secret, timestamp, salt, encryptionMethod) {
 
 	let sig = key + secret + timestamp + salt;
 

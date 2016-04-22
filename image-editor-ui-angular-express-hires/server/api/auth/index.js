@@ -4,4 +4,5 @@ var controller = require('./auth.controller.js');
 
 module.exports = router;
 
-router.get('/creativesdk', controller.creativesdk);
+router.get('/creativesdkAuthObj', controller.creativesdkAuthObj);
+router.get('/creativesdkKey', controller.creativesdkKey);

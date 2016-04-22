@@ -5,7 +5,8 @@ app.controller('HomeController', function($scope, $http, HomeFactory) {
 	$scope.imageEditor;
 
 	// Image data
-	$scope.originalImageSrc = "kyoto.jpg";
+	// Note: the image _must_ be a publicly accessible image
+	$scope.originalImageSrc = "https://upload.wikimedia.org/wikipedia/commons/3/38/Sakurajima_1902_survey.jpg";
 	$scope.currentImageSrc = $scope.originalImageSrc;
 
 	$scope.$on('$stateChangeSuccess', function() {
@@ -17,7 +18,7 @@ app.controller('HomeController', function($scope, $http, HomeFactory) {
   			.then(function(key) {
   				$scope.imageEditor = new Aviary.Feather({
   					apiKey: key,
-  					authenticationURL: "/api/auth/creativesdk",
+  					authenticationURL: "/api/auth/creativesdkAuthObj",
   					onSaveButtonClicked: function() {
   						$scope.imageEditor.saveHiRes();
   						return false;
@@ -39,20 +40,11 @@ app.controller('HomeController', function($scope, $http, HomeFactory) {
 
   	$scope.launchEditor = function() {
 
-		var terms = /^https?:///;
-		var isUrl = $scope.currentImageSrc.match(terms);
-		
-		if (isUrl) {
-			$scope.imageEditor.launch({
-				image: $scope.imageId,
-				url: $scope.currentImageSrc
-			});
-		}
-		else {
-			$scope.imageEditor.launch({
-				image: $scope.imageId
-			});
-		}
+		$scope.imageEditor.launch({
+			image: $scope.imageId,
+			url: $scope.currentImageSrc,
+			hiresUrl: $scope.currentImageSrc
+		});
 	}
 
 	$scope.resetImage = function() {
