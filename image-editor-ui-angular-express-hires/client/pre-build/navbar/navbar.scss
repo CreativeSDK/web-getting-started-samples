@@ -1,0 +1,19 @@
+.navbar {
+	border-radius: 0;
+}
+
+.logo {
+  display: block;
+  margin-right: 7px;
+  margin-top: 8px;
+  //display: block;
+  width: 35px;
+  // img {
+  //   display: block;
+  //   width: 50%;
+  // }
+  @media (max-width: 768px) {
+    margin-left: 15px;
+  }
+}
+
