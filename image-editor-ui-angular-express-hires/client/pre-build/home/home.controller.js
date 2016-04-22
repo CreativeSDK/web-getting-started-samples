@@ -17,7 +17,11 @@ app.controller('HomeController', function($scope, $http, HomeFactory) {
   			.then(function(key) {
   				$scope.imageEditor = new Aviary.Feather({
   					apiKey: key,
-  					onSave: function(imageID, newURL) {
+  					onSaveButtonClicked: function() {
+  						$scope.imageEditor.saveHiRes();
+  						return false;
+  					},
+  					onSaveHiRes: function(imageID, newURL) {
 			            $scope.currentImageSrc = newURL;
 			            $scope.imageEditor.close();
 			            $scope.$digest();
