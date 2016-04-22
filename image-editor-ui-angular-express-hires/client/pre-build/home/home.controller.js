@@ -40,6 +40,7 @@ app.controller('HomeController', function($scope, $http, HomeFactory) {
 
   	$scope.launchEditor = function() {
 
+  		// Note: _both_ `url` and `hiresUrl` must be present.
 		$scope.imageEditor.launch({
 			image: $scope.imageId,
 			url: $scope.currentImageSrc,
