@@ -2,7 +2,7 @@
 
 This is an example of using the Creative SDK Image Editor for Web with Angular and Express. It shows one way to set up your client and server for **High Resolution image editing**. 
 
-_**Note:** Approval is required for High Resoltion image editing to work in the Web Image Editor. For more information about getting approval, see the [High Resolution image editing guide](https://creativesdk.adobe.com/docs/android/#/articles/highresolution/index.html)._
+_**Note:** Approval is required for High Resolution image editing to work in the Web Image Editor. For more information about getting approval, see the [High Resolution image editing guide](https://creativesdk.adobe.com/docs/android/#/articles/highresolution/index.html)._
 
 ## How to use
 
