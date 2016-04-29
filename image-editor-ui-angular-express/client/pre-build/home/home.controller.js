@@ -1,4 +1,4 @@
-app.controller('HomeController', function($scope, $http, HomeFactory) {
+app.controller('HomeController', function($scope, $http) {
   
   	// Image editor data
 	$scope.imageId = "editable-image";
@@ -13,24 +13,21 @@ app.controller('HomeController', function($scope, $http, HomeFactory) {
 	});
 
   	$scope.getImageEditor = function() {
-  		HomeFactory.getCreativeSdkApiKey()
-  			.then(function(key) {
-  				$scope.imageEditor = new Aviary.Feather({
-  					apiKey: key,
-  					onSave: function(imageID, newURL) {
-			            $scope.currentImageSrc = newURL;
-			            $scope.imageEditor.close();
-			            $scope.$digest();
-			            console.log(newURL);
-			        },
-			        onError: function(errorObj) {
-			            console.log(errorObj.code);
-			            console.log(errorObj.message);
-			            console.log(errorObj.args);
-			        }
-  				})
-  			});
-  	}
+		$scope.imageEditor = new Aviary.Feather({
+				apiKey: "<YOUR_API_KEY>",
+				onSave: function(imageID, newURL) {
+	            $scope.currentImageSrc = newURL;
+	            $scope.imageEditor.close();
+	            $scope.$digest();
+	            console.log(newURL);
+	        },
+	        onError: function(errorObj) {
+	            console.log(errorObj.code);
+	            console.log(errorObj.message);
+	            console.log(errorObj.args);
+	        }
+	    });
+	}
 
   	$scope.launchEditor = function() {
 
