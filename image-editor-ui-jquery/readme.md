@@ -16,7 +16,7 @@ Just follow the steps below.
 1. `git clone` [the parent repo](https://github.com/CreativeSDK/web-getting-started-samples)
 1. `cd` into this subdirectory
 1. Run `npm install` (for Bootstrap and jQuery)
-1. Add your Client ID as a string in `index.js` (replacing the string "<YOUR_KEY_HERE>")
+1. Add your Client ID as a string in `index.js` (replacing the string `"<YOUR_KEY_HERE>"`)
 1. Run the app
 
 ## Learn more
