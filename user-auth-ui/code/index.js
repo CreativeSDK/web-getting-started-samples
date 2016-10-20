@@ -1,5 +1,5 @@
 /* 1) Add click handlers to call your helper functions */
-document.getElementById("csdk-login").addEventListener('click', handleCsdkAuth, false);
+document.getElementById("csdk-login").addEventListener('click', handleCsdkLogin, false);
 document.getElementById("csdk-logout").addEventListener('click', handleCsdkLogout, false);
 
 
@@ -29,7 +29,7 @@ AdobeCreativeSDK.init({
 
 
 /* 2) Make a helper function */
-function handleCsdkAuth() {
+function handleCsdkLogin() {
 
     /* 3) Get auth status */
     AdobeCreativeSDK.getAuthStatus(function(csdkAuth) {
@@ -40,7 +40,7 @@ function handleCsdkAuth() {
             console.log('Logged in!');
         } else {
             // Trigger a login
-            AdobeCreativeSDK.login(handleCsdkAuth);
+            AdobeCreativeSDK.login(handleCsdkLogin);
         }
     });
 }

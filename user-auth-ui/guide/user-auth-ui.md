@@ -68,10 +68,10 @@ As an example, see comments **#1-4** in the code below:
 
 ```
 /* 1) Add a click handler to a button that calls a helper function */
-document.getElementById("csdk-login").addEventListener('click', handleCsdkAuth, false);
+document.getElementById("csdk-login").addEventListener('click', handleCsdkLogin, false);
 
 /* 2) Make a helper function */
-function handleCsdkAuth() {
+function handleCsdkLogin() {
 
     /* 3) Get auth status */
     AdobeCreativeSDK.getAuthStatus(function(csdkAuth) {
@@ -82,7 +82,7 @@ function handleCsdkAuth() {
             console.log('Logged in!');
         } else {
             // Trigger a login
-            AdobeCreativeSDK.login(handleCsdkAuth);
+            AdobeCreativeSDK.login(handleCsdkLogin);
         }
     });
 }
