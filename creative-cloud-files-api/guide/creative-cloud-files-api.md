@@ -4,10 +4,10 @@ In addition to the Asset Browser UI Component, which provides a rich Creative Cl
 
 This guide demonstrates how to use these APIs to **download** existing files from a user's Creative Cloud account, and how to **upload** new files as well.
 
-By the end of this guide, we will have a Web page that:
+By the end of this guide, we will have a Web page that can:
 
-1. **Uploads** new files to a user's Creative Cloud account
-1. **Downloads** existing files from a user's Creative Cloud account
+1. **Upload** new files to a user's Creative Cloud account
+1. **Download** existing files from a user's Creative Cloud account
 
 
 ## Contents
