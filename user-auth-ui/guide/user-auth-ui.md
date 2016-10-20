@@ -36,7 +36,7 @@ Be sure to follow all instructions in the `readme`.
 ## Prerequisites
 This guide will assume that you have installed all software and completed all of the steps in the Getting Started guide.
 
-- _Your Client ID must be [approved for **Production Mode** by Adobe](https://creativesdk.zendesk.com/hc/en-us/articles/204601215-How-to-complete-the-Production-Client-ID-Request) before you release your app._
+_Your Client ID must be [approved for **Production Mode** by Adobe](https://creativesdk.zendesk.com/hc/en-us/articles/204601215-How-to-complete-the-Production-Client-ID-Request) before you release your app._
 
 
 <a name="config"></a>
@@ -54,7 +54,7 @@ To set up:
 <a name="login"></a>
 ## Allowing the user to log in
 
-Before launching any of Creative SDK components, you’ll need to ask your user for permission to access their content. You do this by ensuring that the user is logged in and has granted you access.
+Before launching any of the Creative SDK components, you’ll need to ask your user for permission to access their content. You do this by ensuring that the user is logged in and has granted you access.
 
 Assume you have the following button in your HTML:
 
@@ -108,7 +108,9 @@ Message: File not found.
 Error code explanation: 404 = Nothing matches the given URI.
 ```
 
-This means you have not successfully set up the required `redirectims.html` file on your server. See the [Configuration](#config) section of this guide for details.
+This means you have not successfully set up the required `redirectims.html` file on your server. 
+
+See the [Configuration](#config) section of this guide for details.
 
 
 <a name="logout"></a>
