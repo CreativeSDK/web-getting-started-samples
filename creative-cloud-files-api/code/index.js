@@ -160,13 +160,15 @@ function getCCFolderAssets() {
                 // Create elements to be appended to DOM
                 var div = document.createElement('div');
                 var button = document.createElement('button');
-                var span = document.createElement('span');
+                var fileNameSpan = document.createElement('span');
+                var fileSizeSpan = document.createElement('span');
 
                 var fileName = assetArray[i].name;
                 var fileSize = assetArray[i].fileSize;
 
-                button.innerHTML = "Download " + fileName;
-                span.innerHTML = " " + Math.round(fileSize/1024) + " KB";
+                button.innerHTML = "Download";
+                fileNameSpan.innerHTML = " " + fileName;
+                fileSizeSpan.innerHTML = " (" + Math.round(fileSize/1024) + " KB)";
 
                 /* Attach click handlers to buttons */
                 (function addListener(path, fileName) {
@@ -179,7 +181,8 @@ function getCCFolderAssets() {
 
                 // Append elements to DOM
                 div.appendChild(button);
-                div.appendChild(span);
+                div.appendChild(fileNameSpan);
+                div.appendChild(fileSizeSpan);
                 folderContentsDiv.appendChild(div);
             }
         }
