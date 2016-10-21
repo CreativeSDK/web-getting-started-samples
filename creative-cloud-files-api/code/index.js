@@ -3,6 +3,7 @@ document.getElementById("csdk-login").addEventListener('click', handleCsdkLogin,
 document.getElementById("csdk-logout").addEventListener('click', handleCsdkLogout, false);
 document.getElementById("upload-cc-file").addEventListener('click', uploadFile, false);
 document.getElementById("get-cc-folder-assets").addEventListener('click', getCCFolderAssets, false);
+//document.getElementById("download-cc-file-rendition").addEventListener('click', downloadCCAssetRendition, false);
 
 
 /* Initialize the AdobeCreativeSDK object */
@@ -119,7 +120,41 @@ function getCCFolderAssets() {
 
                 // Success, an array of assets
                 console.log(result.data);
+                downloadCCAssetRendition(params.path, result.data[0].name);
             });
+        }
+        else {
+            // User is not logged in, trigger a login
+            handleCsdkLogin();
+        }
+    });
+}
+
+/* Make a helper function */
+function downloadCCAssetRendition(filePath, fileName) {
+
+    AdobeCreativeSDK.getAuthStatus(function(csdkAuth) {
+
+        if (csdkAuth.isAuthorized) {
+
+            /* 1) Make a params object to pass to Creative Cloud */
+            var params = {
+                path: filePath + "/" + fileName,
+                type: AdobeCreativeSDK.Constants.Asset.RenditionType.JPEG
+            }
+
+            /* 2) Request an asset rendition from Creative Cloud */
+            AdobeCreativeSDK.API.Files.getRendition(params, function(result) {
+                if (result.error) {
+                    console.log(result.error);
+                    return;
+                }
+
+                // Success, attach the downloaded image to the DOM element
+                var imageElement = document.getElementById("downloaded-cc-rendition");
+                imageElement.src = result.data;
+            });
+
         }
         else {
             // User is not logged in, trigger a login
