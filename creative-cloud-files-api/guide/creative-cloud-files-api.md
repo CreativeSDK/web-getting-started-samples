@@ -120,9 +120,22 @@ params.overwrite = true
 
 You can recieve data about the assets contained in a Creative Cloud Files folder via the API.
 
+Assume you have the following element in your HTML:
+
+```
+<button id="get-cc-folder-assets">Get Creative Cloud Folder Assets</button>
+```
+
+In your JavaScript, add a click handler for the upload button:
+
+```
+document.getElementById("get-cc-folder-assets").addEventListener('click', getCCFolderAssets, false);
+```
+
 See comments **#1-2** in the example helper function below:
 
 ```
+/* Make a helper function */
 function getCCFolderAssets() {
 
     AdobeCreativeSDK.getAuthStatus(function(csdkAuth) {
@@ -161,7 +174,13 @@ When the call succeeds, the data you requested will reside in `result.data` as a
 
 When you have the path of the Creative Cloud File asset that your user wants to download, you can request a rendition of that asset via the API.
 
-Assume you have the following element in your HTML:
+As a very simple example, let's alter the text in our `#get-cc-folder-assets` button:
+
+```
+<button id="get-cc-folder-assets">Download rendition from Creative Cloud</button>
+```
+
+Now, assume you have the following element in your HTML:
 
 ```
 <img id="downloaded-cc-rendition">
@@ -170,6 +189,7 @@ Assume you have the following element in your HTML:
 See comments **#1-2** in the example helper function below:
 
 ```
+/* Make a helper function */
 function downloadCCAssetRendition(filePath) {
 
     AdobeCreativeSDK.getAuthStatus(function(csdkAuth) {
@@ -203,7 +223,23 @@ function downloadCCAssetRendition(filePath) {
 }
 ```
 
-The rendition you requested will come back to you as `result.data`, as shown in the example above.
+The rendition of the file you requested in `params.path` will come back to you as `result.data`. In the example above, the rendition is then set as `imageElement.src`, displaying the image in the DOM.
+
+To tie this all together, we will revisit the `getCCFolderAssets()` function that we made earlier.
+
+In the success handling for our `AdobeCreativeSDK.API.Files.getAssets()` call, let's call our `downloadCCAssetRendition()` function (see comment **#1** in the code below):
+
+```
+// Success, an array of assets
+console.log(result.data);
+
+/* 1) Download the first asset in the folder */
+downloadCCAssetRendition(params.path, result.data[0].name);
+```
+
+Here, `result.data[0].name` is the file name of the first asset in the folder.
+
+If you have followed along with the code, you should be able to press the `#get-cc-folder-assets` button to download and display an asset from Creative Cloud.
 
 ### Requesting a specific rendition type
 
@@ -218,7 +254,7 @@ Currently, these enum members are supported:
 - PNG
 - JPEG
 
-See the `params` object in the code above for example usage.
+See the `params.type` value in the `downloadCCAssetRendition()` code above for example usage.
 
 
 <a name="references"></a>
