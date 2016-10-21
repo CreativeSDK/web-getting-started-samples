@@ -1,5 +1,4 @@
 /* Add click handlers to call your helper functions */
-document.getElementById("csdk-login").addEventListener('click', handleCsdkLogin, false);
 document.getElementById("csdk-logout").addEventListener('click', handleCsdkLogout, false);
 document.getElementById("upload-cc-file").addEventListener('click', uploadFile, false);
 document.getElementById("get-cc-folder-assets").addEventListener('click', getCCFolderAssets, false);
