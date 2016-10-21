@@ -2,6 +2,10 @@ var logoutButton = document.getElementById("csdk-logout");
 var uploadButton = document.getElementById("upload-cc-file");
 var getAssetsButton = document.getElementById("get-cc-folder-assets");
 
+var folderThrobber = document.getElementById("folder-throbber");
+var renditionThrobber = document.getElementById("rendition-throbber");
+var uploadThrobber = document.getElementById("upload-throbber");
+
 /* Add click handlers to call your helper functions */
 logoutButton.addEventListener('click', handleCsdkLogout, false);
 uploadButton.addEventListener('click', uploadFile, false);
@@ -87,6 +91,8 @@ function uploadFile() {
         /* 2) If the user is logged in AND their browser can upload */
         if (csdkAuth.isAuthorized && AdobeCreativeSDK.API.Files.canUpload()) {
 
+            uploadThrobber.style.visibility = "visible";
+
             /* 3) Make a params object to pass to Creative Cloud */
             var params = {
                 data: file,
@@ -96,6 +102,8 @@ function uploadFile() {
 
             /* 4) Upload, handling error and success in your callback */
             AdobeCreativeSDK.API.Files.upload(params, function(result) {
+                uploadThrobber.style.visibility = "hidden";
+
                 if (result.error) {
                     console.log(result.error);
 
@@ -134,6 +142,8 @@ function getCCFolderAssets() {
 
         if (csdkAuth.isAuthorized) {
 
+            folderThrobber.style.visibility = "visible";
+
             /* 1) Make a params object to pass to Creative Cloud */
             var params = {
                 path: "/files/My CSDK App test" // defaults to root if not set
@@ -141,6 +151,8 @@ function getCCFolderAssets() {
 
             /* 2) Request an array of assets from Creative Cloud */
             AdobeCreativeSDK.API.Files.getAssets(params, function(result) {
+                folderThrobber.style.visibility = "hidden";
+
                 if (result.error) {
                     console.log(result.error);
                     return;
@@ -211,6 +223,8 @@ function downloadCCAssetRendition(filePath) {
 
         if (csdkAuth.isAuthorized) {
 
+            renditionThrobber.style.visibility = "visible";
+
             /* 1) Make a params object to pass to Creative Cloud */
             var params = {
                 path: filePath,
@@ -219,6 +233,8 @@ function downloadCCAssetRendition(filePath) {
 
             /* 2) Request an asset rendition from Creative Cloud */
             AdobeCreativeSDK.API.Files.getRendition(params, function(result) {
+                renditionThrobber.style.visibility = "hidden";
+
                 if (result.error) {
                     console.log(result.error);
                     return;

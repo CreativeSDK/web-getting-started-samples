@@ -2,3 +2,7 @@
 	margin-top: 20px;
 	margin-bottom: 20px;
 }
+
+#folder-throbber, #rendition-throbber, #upload-throbber {
+	visibility: hidden;
+}
