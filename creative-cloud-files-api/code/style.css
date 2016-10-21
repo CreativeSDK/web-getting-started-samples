@@ -6,3 +6,7 @@
 #folder-throbber, #rendition-throbber, #upload-throbber {
 	visibility: hidden;
 }
+
+img {
+	max-width: 100%;
+}
