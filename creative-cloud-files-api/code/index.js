@@ -1,7 +1,11 @@
+var logoutButton = document.getElementById("csdk-logout");
+var uploadButton = document.getElementById("upload-cc-file");
+var getAssetsButton = document.getElementById("get-cc-folder-assets");
+
 /* Add click handlers to call your helper functions */
-document.getElementById("csdk-logout").addEventListener('click', handleCsdkLogout, false);
-document.getElementById("upload-cc-file").addEventListener('click', uploadFile, false);
-document.getElementById("get-cc-folder-assets").addEventListener('click', getCCFolderAssets, false);
+logoutButton.addEventListener('click', handleCsdkLogout, false);
+uploadButton.addEventListener('click', uploadFile, false);
+getAssetsButton.addEventListener('click', getCCFolderAssets, false);
 
 
 /* Initialize the AdobeCreativeSDK object */
@@ -20,6 +24,7 @@ AdobeCreativeSDK.init({
                 AdobeCreativeSDK.loginWithRedirect().
             */
             console.log('You must be logged in to use the Creative SDK');
+            logoutButton.style.visibility = "hidden";
         } else if (error.type === AdobeCreativeSDK.ErrorTypes.GLOBAL_CONFIGURATION) { 
             console.log('Please check your configuration');
         } else if (error.type === AdobeCreativeSDK.ErrorTypes.SERVER_ERROR) { 
@@ -39,6 +44,7 @@ function handleCsdkLogin() {
         if (csdkAuth.isAuthorized) {
             // The user is logged in and has authorized your site. 
             console.log('Logged in!');
+            logoutButton.style.visibility = "visible";
         } else {
             // Trigger a login
             AdobeCreativeSDK.login(handleCsdkLogin);
@@ -56,6 +62,7 @@ function handleCsdkLogout() {
         if (csdkAuth.isAuthorized) {
             AdobeCreativeSDK.logout();
             console.log('Logged out!');
+            logoutButton.style.visibility = "hidden";
         } else {
             console.log('Not logged in!');
         }
@@ -68,9 +75,14 @@ function uploadFile() {
 
     AdobeCreativeSDK.getAuthStatus(function(csdkAuth) {
 
-        /* 1) Get the first element from the FileList */
-        var file = document.getElementById("fileItem").files[0];
         var uploadResultIndicator = document.getElementById("upload-result-indicator");
+
+        /* 1) Get the first element from the FileList */
+        var file = document.getElementById("fileItem").files[0];     
+        if (!file) {
+            showUploadStatus("Choose a file to upload!");
+            return;
+        }
 
         /* 2) If the user is logged in AND their browser can upload */
         if (csdkAuth.isAuthorized && AdobeCreativeSDK.API.Files.canUpload()) {
@@ -86,19 +98,24 @@ function uploadFile() {
             AdobeCreativeSDK.API.Files.upload(params, function(result) {
                 if (result.error) {
                     console.log(result.error);
-                    uploadResultIndicator.innerHTML = "Upload error!";
-                    window.setTimeout(clearUploadStatus, 2000);
+
+                    showUploadStatus("Upload error!");
                     return;
                 }
 
                 // Success
                 console.log(result.file);
-                uploadResultIndicator.innerHTML = "Uploaded!"
-                window.setTimeout(clearUploadStatus, 2000);
+                showUploadStatus("Uploaded!");
+                return;
             });
         } else {
             // User is not logged in, trigger a login
             handleCsdkLogin();
+        }
+
+        function showUploadStatus(message) {
+            uploadResultIndicator.innerHTML = message;
+            window.setTimeout(clearUploadStatus, 2000);
         }
 
         function clearUploadStatus() {
@@ -109,8 +126,6 @@ function uploadFile() {
 
 /* Make a helper function */
 function getCCFolderAssets() {
-
-
 
     AdobeCreativeSDK.getAuthStatus(function(csdkAuth) {
 
