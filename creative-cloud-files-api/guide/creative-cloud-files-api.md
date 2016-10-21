@@ -239,7 +239,7 @@ downloadCCAssetRendition(params.path, result.data[0].name);
 
 Here, `result.data[0].name` is the file name of the first asset in the folder.
 
-If you have followed along with the code, you should be able to press the `#get-cc-folder-assets` button to download and display an asset from Creative Cloud.
+If you have followed along with the code, you should be able to press the `#get-cc-folder-assets` button to download and display first asset in the `/files/My CSDK App test` folder in Creative Cloud.
 
 ### Requesting a specific rendition type
 
