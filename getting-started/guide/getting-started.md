@@ -2,7 +2,7 @@
 
 The Creative SDK lets you build applications that integrate with the Adobe Creative Cloud and leverage its power to benefit your users. 
 
-From letting your users import from and save to their Creative Cloud storage, to offering innovative creative tools for your application, the Creative SDK will help you expand the features of your app by using the Adobe platform.
+From letting your users import from and save to their Creative Cloud storage, to offering innovative creative tools for your application, the Creative SDK will help you expand the features of your app with the Adobe Creative Cloud platform.
 
 This guide shows you how to get up and running with the Creative SDK for Web, including how to authenticate your client, a necessary step for integration with the SDK.
 
@@ -28,7 +28,7 @@ Be sure to follow all instructions in the `readme`.
 <a name="prerequisites"></a>
 ## Prerequisites
 
-1. Before you can work with the Creative SDK, you must register your application and get Client ID and Client Secret values. For details, see [Registering Your Application](#register).
+1. Before you can work with the Creative SDK, you must register your application and get Client ID (API Key) and Client Secret values. For details, see the "Registering Your Application" section of this guide.
 1. The following software is required:
 
     - **Supported browsers**: Chrome 53+, Safari 9+, Firefox 45+, Edge, IE11+
@@ -40,7 +40,7 @@ Be sure to follow all instructions in the `readme`.
 
 When you register your application, you are automatically approved for Development Mode. 
 
-_Your Client ID (API Key) must be [approved for **Production Mode** by Adobe](https://creativesdk.zendesk.com/hc/en-us/articles/204601215-How-to-complete-the-Production-Client-ID-Request) before you release your app._ See the [What's Next?](#whats-next) section for details on submitting your app for Production Mode approval.
+_**Important:** Your Client ID (API Key) must be [approved for **Production Mode** by Adobe](https://creativesdk.zendesk.com/hc/en-us/articles/204601215-How-to-complete-the-Production-Client-ID-Request) before you release your app._ See the "What's Next?" section of this guide for details on submitting your app for Production Mode approval.
 
 To register your application for Development Mode, follow these steps:
 
@@ -49,15 +49,15 @@ To register your application for Development Mode, follow these steps:
 1. Click "Adobe ID Key", then "Next"
 1. Fill out the form, then click "Next" (be sure to select "Web" as your platform)
 
-_**Important:** As part of registering your application, you are given a Client ID (API Key). We will use this in the steps below._
+_**Note:** As part of registering your application, you are given a Client ID (API Key). We will use this in the steps below._
 
 
 <a name="new-project"></a>
 ## Adding the SDK to a New Project
 
-The Creative SDK for web doesn’t require that you download any special files or libraries. Instead, you simply include a bit of JavaScript in your web site that loads the necessary resources. 
+The Creative SDK for web doesn’t require that you download any special files or libraries. Instead, you simply include the Creative SDK script in your website, which will load the necessary resources:
 
-```html
+```language-html
 <body>
 
     <!-- Your HTML here -->
@@ -66,7 +66,7 @@ The Creative SDK for web doesn’t require that you download any special files o
 </body>
 ```
 
-The JavaScript creates an `AdobeCreativeSDK` object that you can use to access all of the functionality within the Creative SDK.
+The script creates an `AdobeCreativeSDK` object that you can use to access all of the functionality within the Creative SDK.
 
 
 <a name="client-auth"></a>
@@ -74,13 +74,13 @@ The JavaScript creates an `AdobeCreativeSDK` object that you can use to access a
 
 Client authentication indentifies your site to Adobe. It is a required step before integrating any Creative SDK components. 
 
-You can authenticate your client with the Client ID (API Key) you have obtained from the Adobe.io Console (see "Registering Your Application" above).
+You can authenticate your client with the Client ID (API Key) you have obtained from the Adobe.io Console (see the "Registering Your Application" section above).
 
 ### Code
 
 See comments **#1-4** in the code below:
 
-```javascript
+```language-javascript
 /* 1) Initialize the AdobeCreativeSDK object */
 AdobeCreativeSDK.init({
 	/* 2) Add your Client ID (API Key) */

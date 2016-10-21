@@ -4,7 +4,7 @@ Most Creative SDK components require an authenticated user. Before launching the
 
 The User Auth UI component provides the user with a familiar Adobe ID login screen. Your user can enter their Adobe ID username and password, then verify the app name they are granting access to, and the scope of its access.
 
-![](https://s3.amazonaws.com/csdk-assets-aviary-prod-us-east-1/docs/android/user-auth-login.png)
+![](https://s3.amazonaws.com/csdk-assets-aviary-prod-us-east-1/web/user-auth-login.png)
 
 In this guide, we will cover how to display the Creative SDK User Auth UI component and check for an authenticated user.
 
@@ -36,17 +36,17 @@ Be sure to follow all instructions in the `readme`.
 ## Prerequisites
 This guide will assume that you have installed all software and completed all of the steps in the Getting Started guide.
 
-_Your Client ID must be [approved for **Production Mode** by Adobe](https://creativesdk.zendesk.com/hc/en-us/articles/204601215-How-to-complete-the-Production-Client-ID-Request) before you release your app._
+_**Important:** Your Client ID must be [approved for **Production Mode** by Adobe](https://creativesdk.zendesk.com/hc/en-us/articles/204601215-How-to-complete-the-Production-Client-ID-Request) before you release your app._
 
 
 <a name="config"></a>
 ## Configuration
-In order for login to work, you'll need to store a small HTML file, named `redirectims.html` on your server. This file will contain your Client ID.
+In order for login to work, you'll need to store a small HTML file, named `redirectims.html`, on your server. This file will contain your Client ID (API Key).
 
 To set up:
 
 1. [Download the `redirectims.html` file](https://cdn-creativesdk.adobe.io/0.3/redirectims.html)
-1. Add your own Client ID to the file
+1. Add your own Client ID (API Key) to the file
 1. Upload the file to the **root** path of your web application 
     Example: `https://mydomain.com/redirectims.html`
 
@@ -58,15 +58,15 @@ Before launching any of the Creative SDK components, you’ll need to ask your u
 
 Assume you have the following button in your HTML:
 
-```
-<button id="csdk-login">Log into Creative Cloud</button>
+```language-html
+<button id="csdk-login">Log in to Creative Cloud</button>
 ```
 
 _**Important:** The `AdobeCreativeSDK.login()` function, must be executed as the direct result of a **user click event**, otherwise the popup will be blocked by the browser._
 
 As an example, see comments **#1-4** in the code below:
 
-```
+```language-javascript
 /* 1) Add a click handler to a button that calls a helper function */
 document.getElementById("csdk-login").addEventListener('click', handleCsdkLogin, false);
 
@@ -90,9 +90,9 @@ function handleCsdkLogin() {
 
 With this code, a user who hasn't yet logged in with their Adobe ID, will see the User Auth UI component open in a pop-up window:
 
-![]()
+![](https://s3.amazonaws.com/csdk-assets-aviary-prod-us-east-1/web/user-auth-login.png)
 
-Your user can now enter their username and password. This will trigger the `console.log` in the code above.
+Your user can now enter their username and password. Successful login (or existing login status) will trigger the `console.log` in the code above.
 
 ### Error response on login
 
@@ -110,7 +110,7 @@ Error code explanation: 404 = Nothing matches the given URI.
 
 This means you have not successfully set up the required `redirectims.html` file on your server. 
 
-See the [Configuration](#config) section of this guide for details.
+See the "Configuration" section of this guide for details.
 
 
 <a name="logout"></a>
@@ -120,14 +120,14 @@ Allowing a user to log out can be handled in code similarly to the login flow.
 
 Assume you have the following button in your HTML:
 
-```
+```language-html
 <button id="csdk-logout">Log out of Creative Cloud</button>
 ```
 
 For an example, see comments **#1-4** in the code below:
 
-```
-/* 1) Add a click handler to a button that called a helper function */
+```language-javascript
+/* 1) Add a click handler to a button that calls a helper function */
 document.getElementById("csdk-logout").addEventListener('click', handleCsdkLogout, false);
 
 /* 2) Make a helper function */

@@ -15,7 +15,7 @@ By the end of this guide, we will have a Web page that can:
 1. [GitHub](#github)
 1. [Prerequisites](#prereqs)
 1. [Uploading an asset](#upload)
-1. [Getting Creative Cloud folder assets](#folder)
+1. [Getting Creative Cloud assets](#assets)
 1. [Downloading an asset rendition](#download)
 1. [References](#references)
 1. [Troubleshooting and Known Issues](#troubleshooting)
@@ -50,7 +50,7 @@ The file you want to upload to Creative Cloud can be passed as a `File` from a [
 Assume you have the following elements in your HTML:
 
 ```
-<input id="fileItem" type="file" name="">
+<input id="fileItem" type="file">
 <button id="upload-cc-file">Upload file to Creative Cloud</button>
 ```
 
@@ -63,6 +63,7 @@ document.getElementById("upload-cc-file").addEventListener('click', uploadFile, 
 Then you can create your `uploadFile()` helper function. As an example, see comments **#1-4** in the code below:
 
 ```
+/* Make a helper function */
 function uploadFile() {
 
     AdobeCreativeSDK.getAuthStatus(function(csdkAuth) {
@@ -71,24 +72,30 @@ function uploadFile() {
         var file = document.getElementById("fileItem").files[0];
 
         /* 2) If the user is logged in AND their browser can upload */
-        if (csdkAuth.isAuthorized && AdobeCreativeSDK.API.Files.canUpload()) {
+        if (csdkAuth.isAuthorized) {
+            if (AdobeCreativeSDK.API.Files.canUpload()) {
 
-            /* 3) Make a params object to pass to Creative Cloud */
-            var params = {
-                data: file,
-                folder: "My CSDK App test"
-            }
-
-            /* 4) Upload, handling error and success in your callback */
-            AdobeCreativeSDK.API.Files.upload(params, function(result) {
-                if (result.error) {
-                    console.log(result.error);
-                    return;
+                /* 3) Make a params object to pass to Creative Cloud */
+                var params = {
+                    data: file,
+                    folder: "My CSDK App test", // defaults to root if not set
+                    overwrite: false
                 }
 
-                // Success
-                console.log(result.file); 
-            });
+                /* 4) Upload, handling error and success in your callback */
+                AdobeCreativeSDK.API.Files.upload(params, function(result) {
+                    if (result.error) {
+                        console.log(result.error);
+                        return;
+                    }
+
+                    // Success
+                    console.log(result.file); 
+                });
+            }
+            else {
+                console.log("Can't upload from this browser!");
+            }
         } else {
             // User is not logged in, trigger a login
             handleCsdkLogin();
@@ -115,8 +122,8 @@ params.overwrite = true
 ```
 
 
-<a name="folder"></a>
-## Getting Creative Cloud folder assets
+<a name="assets"></a>
+## Getting Creative Cloud assets
 
 You can recieve data about the assets contained in a Creative Cloud Files folder via the API.
 
@@ -190,7 +197,7 @@ See comments **#1-2** in the example helper function below:
 
 ```
 /* Make a helper function */
-function downloadCCAssetRendition(filePath) {
+function downloadCCAssetRendition(folderPath, fileName) {
 
     AdobeCreativeSDK.getAuthStatus(function(csdkAuth) {
 
@@ -198,7 +205,7 @@ function downloadCCAssetRendition(filePath) {
 
             /* 1) Make a params object to pass to Creative Cloud */
             var params = {
-                path: filePath,
+                path: folderPath + "/" + fileName,
                 type: AdobeCreativeSDK.Constants.Asset.RenditionType.JPEG
             }
 
@@ -225,9 +232,7 @@ function downloadCCAssetRendition(filePath) {
 
 The rendition of the file you requested in `params.path` will come back to you as `result.data`. In the example above, the rendition is then set as `imageElement.src`, displaying the image in the DOM.
 
-To tie this all together, we will revisit the `getCCFolderAssets()` function that we made earlier.
-
-In the success handling for our `AdobeCreativeSDK.API.Files.getAssets()` call, let's call our `downloadCCAssetRendition()` function (see comment **#1** in the code below):
+To tie this all together, we will revisit the `getCCFolderAssets()` function that we made earlier. In the success handling for our `AdobeCreativeSDK.API.Files.getAssets()` call, let's call our `downloadCCAssetRendition()` function (see comment **#1** in the code below):
 
 ```
 // Success, an array of assets
@@ -239,7 +244,7 @@ downloadCCAssetRendition(params.path, result.data[0].name);
 
 Here, `result.data[0].name` is the file name of the first asset in the folder.
 
-If you have followed along with the code, you should be able to press the `#get-cc-folder-assets` button to download and display first asset in the `/files/My CSDK App test` folder in Creative Cloud.
+If you have followed along with the code, you should be able to press the `#get-cc-folder-assets` button to download and display the first asset in the `/files/My CSDK App test` folder in Creative Cloud.
 
 ### Requesting a specific rendition type
 
