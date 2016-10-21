@@ -2,6 +2,7 @@
 document.getElementById("csdk-login").addEventListener('click', handleCsdkLogin, false);
 document.getElementById("csdk-logout").addEventListener('click', handleCsdkLogout, false);
 document.getElementById("upload-cc-file").addEventListener('click', uploadFile, false);
+document.getElementById("get-cc-folder-assets").addEventListener('click', getCCFolderAssets, false);
 
 
 /* Initialize the AdobeCreativeSDK object */
@@ -91,6 +92,36 @@ function uploadFile() {
                 console.log(result.file); 
             });
         } else {
+            // User is not logged in, trigger a login
+            handleCsdkLogin();
+        }
+    });
+}
+
+/* Make a helper function */
+function getCCFolderAssets() {
+
+    AdobeCreativeSDK.getAuthStatus(function(csdkAuth) {
+
+        if (csdkAuth.isAuthorized) {
+
+            /* 1) Make a params object to pass to Creative Cloud */
+            var params = {
+                path: "/files/My CSDK App test" // defaults to root if not set
+            }
+
+            /* 2) Request an array of assets from Creative Cloud */
+            AdobeCreativeSDK.API.Files.getAssets(params, function(result) {
+                if (result.error) {
+                    console.log(result.error);
+                    return;
+                }
+
+                // Success, an array of assets
+                console.log(result.data);
+            });
+        }
+        else {
             // User is not logged in, trigger a login
             handleCsdkLogin();
         }
