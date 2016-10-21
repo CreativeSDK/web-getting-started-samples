@@ -1,16 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>CSDK Getting Started</title>
+	<title>CSDK Creative Cloud Files API</title>
 </head>
 <body>
+	<h1>CSDK Creative Cloud Files API</h1>
+	<button id="csdk-logout">Log out of Creative Cloud</button>
+
+	<h2>Upload to Creative Cloud folder</h2>
 	<input id="fileItem" type="file" name="">
 	<button id="upload-cc-file">Upload file to Creative Cloud</button>
-	<button id="csdk-logout">Log out of Creative Cloud</button>
-	<br>
+	<span id="upload-result-indicator"></span>
+	<hr>
+	<h2>Download asset rendition from Creative Cloud</h2>
 	<button id="get-cc-folder-assets">Get Creative Cloud Folder Assets</button>
-	<!-- <button id="download-cc-file-rendition">Download Creative Cloud File Rendition</button> -->
 	<br>
+	<div id="folder-contents"></div>
 	<img id="downloaded-cc-rendition">
 
 

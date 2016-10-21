@@ -76,7 +76,7 @@ function uploadFile() {
             /* 3) Make a params object to pass to Creative Cloud */
             var params = {
                 data: file,
-                folder: "My CSDK App"
+                folder: "My CSDK App test"
             }
 
             /* 4) Upload, handling error and success in your callback */
@@ -97,7 +97,7 @@ function uploadFile() {
 }
 ```
 
-With this code, a user who is logged in will be able to upload files to the Creative Cloud. Those files will be stored in a folder called "My CSDK App", as set in our `params` object above.
+With this code, a user who is logged in will be able to upload files to the Creative Cloud. Those files will be stored in a folder called "My CSDK App test", as set in our `params` object above.
 
 A successful upload will, in this example, trigger the `console.log(result.file)` in the code above. The `.file` object you receive here will contain data about the file you have just successfully uploaded.
 

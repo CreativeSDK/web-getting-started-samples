@@ -2,7 +2,6 @@
 document.getElementById("csdk-logout").addEventListener('click', handleCsdkLogout, false);
 document.getElementById("upload-cc-file").addEventListener('click', uploadFile, false);
 document.getElementById("get-cc-folder-assets").addEventListener('click', getCCFolderAssets, false);
-//document.getElementById("download-cc-file-rendition").addEventListener('click', downloadCCAssetRendition, false);
 
 
 /* Initialize the AdobeCreativeSDK object */
@@ -71,6 +70,7 @@ function uploadFile() {
 
         /* 1) Get the first element from the FileList */
         var file = document.getElementById("fileItem").files[0];
+        var uploadResultIndicator = document.getElementById("upload-result-indicator");
 
         /* 2) If the user is logged in AND their browser can upload */
         if (csdkAuth.isAuthorized && AdobeCreativeSDK.API.Files.canUpload()) {
@@ -78,22 +78,31 @@ function uploadFile() {
             /* 3) Make a params object to pass to Creative Cloud */
             var params = {
                 data: file,
-                folder: "My CSDK App"
+                folder: "My CSDK App test",
+                overwrite: false
             }
 
             /* 4) Upload, handling error and success in your callback */
             AdobeCreativeSDK.API.Files.upload(params, function(result) {
                 if (result.error) {
                     console.log(result.error);
+                    uploadResultIndicator.innerHTML = "Upload error!";
+                    window.setTimeout(clearUploadStatus, 2000);
                     return;
                 }
 
                 // Success
-                console.log(result.file); 
+                console.log(result.file);
+                uploadResultIndicator.innerHTML = "Uploaded!"
+                window.setTimeout(clearUploadStatus, 2000);
             });
         } else {
             // User is not logged in, trigger a login
             handleCsdkLogin();
+        }
+
+        function clearUploadStatus() {
+            uploadResultIndicator.innerHTML = "";
         }
     });
 }
@@ -101,7 +110,12 @@ function uploadFile() {
 /* Make a helper function */
 function getCCFolderAssets() {
 
+
+
     AdobeCreativeSDK.getAuthStatus(function(csdkAuth) {
+
+        var folderContentsDiv = document.getElementById("folder-contents");
+        clearFolderContentsDiv();
 
         if (csdkAuth.isAuthorized) {
 
@@ -117,20 +131,63 @@ function getCCFolderAssets() {
                     return;
                 }
 
+                if (result.data.length === 0) {
+                    showEmptyFolderMessage();
+                }
+
                 // Success, an array of assets
-                console.log(result.data);
-                downloadCCAssetRendition(params.path, result.data[0].name);
+                addDownloadButtonsToDOM(result.data);                
             });
         }
         else {
             // User is not logged in, trigger a login
             handleCsdkLogin();
         }
+
+        function showEmptyFolderMessage() {
+            var p = document.createElement('p');
+            p.innerHTML = "Nothing in the \"My CSDK App test\" folder. Try uploading something first.";
+
+            folderContentsDiv.appendChild(p);
+        }
+
+        function clearFolderContentsDiv() {
+            folderContentsDiv.innerHTML = "";
+        }
+
+        function addDownloadButtonsToDOM(assetArray) {
+            for (let i = 0; i < assetArray.length; i++) {
+                // Create elements to be appended to DOM
+                var div = document.createElement('div');
+                var button = document.createElement('button');
+                var span = document.createElement('span');
+
+                var fileName = assetArray[i].name;
+                var fileSize = assetArray[i].fileSize;
+
+                button.innerHTML = "Download " + fileName;
+                span.innerHTML = " " + Math.round(fileSize/1024) + " KB";
+
+                /* Attach click handlers to buttons */
+                (function addListener(path, fileName) {
+
+                    var fullPath = params.path + "/" + fileName;
+
+                    button.addEventListener('click', function(){downloadCCAssetRendition(fullPath)}, false);
+
+                })(params.path, fileName)
+
+                // Append elements to DOM
+                div.appendChild(button);
+                div.appendChild(span);
+                folderContentsDiv.appendChild(div);
+            }
+        }
     });
 }
 
 /* Make a helper function */
-function downloadCCAssetRendition(filePath, fileName) {
+function downloadCCAssetRendition(filePath) {
 
     AdobeCreativeSDK.getAuthStatus(function(csdkAuth) {
 
@@ -138,7 +195,7 @@ function downloadCCAssetRendition(filePath, fileName) {
 
             /* 1) Make a params object to pass to Creative Cloud */
             var params = {
-                path: filePath + "/" + fileName,
+                path: filePath,
                 type: AdobeCreativeSDK.Constants.Asset.RenditionType.JPEG
             }
 
