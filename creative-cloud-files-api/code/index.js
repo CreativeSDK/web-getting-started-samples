@@ -1,16 +1,20 @@
-var logoutButton = document.getElementById("csdk-logout");
-var uploadButton = document.getElementById("upload-cc-file");
-var getAssetsButton = document.getElementById("get-cc-folder-assets");
-
+/* UI elements */
+var folderContentsDiv = document.getElementById("folder-contents");
 var folderThrobber = document.getElementById("folder-throbber");
 var renditionThrobber = document.getElementById("rendition-throbber");
 var uploadThrobber = document.getElementById("upload-throbber");
+
+/* Buttons */
+var logoutButton = document.getElementById("csdk-logout");
+var uploadButton = document.getElementById("upload-cc-file");
+var getAssetsButton = document.getElementById("get-cc-folder-assets");
 
 /* Add click handlers to call your helper functions */
 logoutButton.addEventListener('click', handleCsdkLogout, false);
 uploadButton.addEventListener('click', uploadFile, false);
 getAssetsButton.addEventListener('click', getCCFolderAssets, false);
 
+document.addEventListener('DOMContentLoaded', function(){handleCsdkLogin(true)}, false);
 
 /* Initialize the AdobeCreativeSDK object */
 AdobeCreativeSDK.init({
@@ -39,7 +43,9 @@ AdobeCreativeSDK.init({
 
 
 /* Make a helper function */
-function handleCsdkLogin() {
+function handleCsdkLogin(hideLogoutButton) {
+
+    var hideLogoutButton = hideLogoutButton || null;
 
     /* Get auth status */
     AdobeCreativeSDK.getAuthStatus(function(csdkAuth) {
@@ -49,6 +55,8 @@ function handleCsdkLogin() {
             // The user is logged in and has authorized your site. 
             console.log('Logged in!');
             logoutButton.style.visibility = "visible";
+        } else if (hideLogoutButton) {
+            logoutButton.style.visibility = "hidden";
         } else {
             // Trigger a login
             AdobeCreativeSDK.login(handleCsdkLogin);
@@ -65,8 +73,9 @@ function handleCsdkLogout() {
         /* Handle auth based on status */
         if (csdkAuth.isAuthorized) {
             AdobeCreativeSDK.logout();
-            console.log('Logged out!');
+            clearFolderContentsDiv();
             logoutButton.style.visibility = "hidden";
+            console.log('Logged out!');
         } else {
             console.log('Not logged in!');
         }
@@ -137,7 +146,6 @@ function getCCFolderAssets() {
 
     AdobeCreativeSDK.getAuthStatus(function(csdkAuth) {
 
-        var folderContentsDiv = document.getElementById("folder-contents");
         clearFolderContentsDiv();
 
         if (csdkAuth.isAuthorized) {
@@ -176,10 +184,6 @@ function getCCFolderAssets() {
             p.innerHTML = "Nothing in the \"My CSDK App test\" folder. Try uploading something first.";
 
             folderContentsDiv.appendChild(p);
-        }
-
-        function clearFolderContentsDiv() {
-            folderContentsDiv.innerHTML = "";
         }
 
         function addDownloadButtonsToDOM(assetArray) {
@@ -251,4 +255,8 @@ function downloadCCAssetRendition(filePath) {
             handleCsdkLogin();
         }
     });
+}
+
+function clearFolderContentsDiv() {
+    folderContentsDiv.innerHTML = "";
 }
