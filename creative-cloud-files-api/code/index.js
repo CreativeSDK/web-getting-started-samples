@@ -171,11 +171,14 @@ function getCCFolderAssets() {
 
                 if (result.error) {
                     console.log(result.error);
+
+                    showErrorMessage(result.error.errorText.message);
                     return;
                 }
 
                 if (result.data.length === 0) {
                     showEmptyFolderMessage();
+                    return;
                 }
 
                 // Success, an array of assets
@@ -185,6 +188,13 @@ function getCCFolderAssets() {
         else {
             // User is not logged in, trigger a login
             handleCsdkLogin(getCCFolderAssets);
+        }
+
+        function showErrorMessage(message) {
+            var p = document.createElement('p');
+            p.innerHTML = message;
+
+            folderContentsDiv.appendChild(p);
         }
 
         function showEmptyFolderMessage() {
