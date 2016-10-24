@@ -7,6 +7,10 @@
 	visibility: hidden;
 }
 
+#csdk-logout {
+	visibility: hidden;
+}
+
 img {
 	max-width: 100%;
 }

@@ -3,6 +3,7 @@
 */
 /* Basic UI elements */
 var folderContentsDiv = document.getElementById("folder-contents");
+var imageElement = document.getElementById("downloaded-cc-rendition");
 var folderThrobber = document.getElementById("folder-throbber");
 var renditionThrobber = document.getElementById("rendition-throbber");
 var uploadThrobber = document.getElementById("upload-throbber");
@@ -22,7 +23,7 @@ getAssetsButton.addEventListener('click', getCCFolderAssets, false);
   INTIALIZATION  
 */
 /* Handle logout button visibility on DOM load */
-document.addEventListener('DOMContentLoaded', function(){handleCsdkLogin(true)}, false);
+document.addEventListener('DOMContentLoaded', function(){handleCsdkLogin(null)}, false);
 
 /* Initialize the AdobeCreativeSDK object */
 AdobeCreativeSDK.init({
@@ -53,9 +54,7 @@ AdobeCreativeSDK.init({
 /*
   HELPER FUNCTIONS  
 */
-function handleCsdkLogin(hideLogoutButton) {
-
-    var hideLogoutButton = hideLogoutButton || null;
+function handleCsdkLogin(callback) {
 
     /* Get auth status */
     AdobeCreativeSDK.getAuthStatus(function(csdkAuth) {
@@ -65,12 +64,13 @@ function handleCsdkLogin(hideLogoutButton) {
             // The user is logged in and has authorized your site. 
             console.log('Logged in!');
             logoutButton.style.visibility = "visible";
-        } else if (hideLogoutButton) {
-            // Called only on DOM load when csdkAuth.isAuthorized === false
-            logoutButton.style.visibility = "hidden";
+
+            if (callback) {
+                callback();
+            }
         } else {
             // Trigger a login
-            AdobeCreativeSDK.login(handleCsdkLogin);
+            AdobeCreativeSDK.login(function(){handleCsdkLogin(callback)});
         }
     });
 }
@@ -83,7 +83,7 @@ function handleCsdkLogout() {
         /* Handle auth based on status */
         if (csdkAuth.isAuthorized) {
             AdobeCreativeSDK.logout();
-            clearFolderContentsDiv();
+            resetUI();
             logoutButton.style.visibility = "hidden";
             console.log('Logged out!');
         } else {
@@ -136,7 +136,7 @@ function uploadFile() {
             });
         } else {
             // User is not logged in, trigger a login
-            handleCsdkLogin();
+            handleCsdkLogin(uploadFile);
         }
 
         function showUploadStatus(message) {
@@ -154,7 +154,7 @@ function getCCFolderAssets() {
 
     AdobeCreativeSDK.getAuthStatus(function(csdkAuth) {
 
-        clearFolderContentsDiv();
+        resetUI();
 
         if (csdkAuth.isAuthorized) {
 
@@ -184,7 +184,7 @@ function getCCFolderAssets() {
         }
         else {
             // User is not logged in, trigger a login
-            handleCsdkLogin();
+            handleCsdkLogin(getCCFolderAssets);
         }
 
         function showEmptyFolderMessage() {
@@ -239,7 +239,7 @@ function downloadCCAssetRendition(filePath) {
             /* 1) Make a params object to pass to Creative Cloud */
             var params = {
                 path: filePath,
-                type: AdobeCreativeSDK.Constants.Asset.RenditionType.JPEG
+                type: AdobeCreativeSDK.Constants.Asset.RenditionType.JPEG,
             }
 
             /* 2) Request an asset rendition from Creative Cloud */
@@ -252,18 +252,18 @@ function downloadCCAssetRendition(filePath) {
                 }
 
                 // Success, attach the downloaded image to the DOM element
-                var imageElement = document.getElementById("downloaded-cc-rendition");
                 imageElement.src = result.data;
             });
 
         }
         else {
             // User is not logged in, trigger a login
-            handleCsdkLogin();
+            handleCsdkLogin(null);
         }
     });
 }
 
-function clearFolderContentsDiv() {
+function resetUI() {
     folderContentsDiv.innerHTML = "";
+    imageElement.src = "";
 }
