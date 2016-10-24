@@ -139,7 +139,7 @@ function uploadFile() {
                 }
 
                 // Success
-                console.log(result.file);
+                console.log("Uploaded file:", result.file);
                 showUploadStatus("Uploaded!");
                 return;
             });
