@@ -30,17 +30,21 @@
 			</div>
 
 			<div class="col-xs-12">
-				<form class="form-inline">
-					<div class="form-group">
+				<div class="row">
+					<div class="col-xs-12">
 						<label class="btn btn-default">
-						    Choose file... <input id="fileItem" type="file" style="display: none;">
+						    Choose file... <input id="file-item" type="file">
 						</label>
+						<span id="upload-file-name"></span>
+					</div>
+			
+					<div class="col-xs-12">
 						<button id="upload-cc-file" type="button" class="btn">Upload file to Creative Cloud</button>
 
 						<img id="upload-throbber" src="img/throbber.gif">
 						<span id="upload-result-indicator"></span>
 					</div>
-				</form>
+				</div>
 			</div>
 		</div>
 

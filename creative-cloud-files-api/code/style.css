@@ -11,6 +11,10 @@
 	visibility: hidden;
 }
 
+#file-item {
+	display: none;
+}
+
 img {
 	max-width: 100%;
 }

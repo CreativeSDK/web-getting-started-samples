@@ -4,6 +4,9 @@
 /* Basic UI elements */
 var folderContentsDiv = document.getElementById("folder-contents");
 var imageElement = document.getElementById("downloaded-cc-rendition");
+var fileInput = document.getElementById("file-item");
+var uploadFileName = document.getElementById("upload-file-name");
+
 var folderThrobber = document.getElementById("folder-throbber");
 var renditionThrobber = document.getElementById("rendition-throbber");
 var uploadThrobber = document.getElementById("upload-throbber");
@@ -17,6 +20,7 @@ var getAssetsButton = document.getElementById("get-cc-folder-assets");
 logoutButton.addEventListener('click', handleCsdkLogout, false);
 uploadButton.addEventListener('click', uploadFile, false);
 getAssetsButton.addEventListener('click', getCCFolderAssets, false);
+fileInput.addEventListener('change', displayUploadFileName, false);
 
 
 /*
@@ -93,6 +97,11 @@ function handleCsdkLogout() {
     });
 }
 
+function displayUploadFileName() {
+    var fileName = fileInput.files[0].name;
+    uploadFileName.innerHTML = fileName;
+}
+
 function uploadFile() {
 
     AdobeCreativeSDK.getAuthStatus(function(csdkAuth) {
@@ -100,7 +109,7 @@ function uploadFile() {
         var uploadResultIndicator = document.getElementById("upload-result-indicator");
 
         /* 1) Get the first element from the FileList */
-        var file = document.getElementById("fileItem").files[0];     
+        var file = fileInput.files[0];     
         if (!file) {
             showUploadStatus("Choose a file to upload!");
             return;
@@ -146,6 +155,7 @@ function uploadFile() {
 
         function clearUploadStatus() {
             uploadResultIndicator.innerHTML = "";
+            uploadFileName.innerHTML = "";
         }
     });
 }
