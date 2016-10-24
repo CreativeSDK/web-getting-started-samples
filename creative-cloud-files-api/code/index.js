@@ -1,4 +1,7 @@
-/* UI elements */
+/*
+    UI ELEMENT SETUP
+*/
+/* Basic UI elements */
 var folderContentsDiv = document.getElementById("folder-contents");
 var folderThrobber = document.getElementById("folder-throbber");
 var renditionThrobber = document.getElementById("rendition-throbber");
@@ -14,6 +17,11 @@ logoutButton.addEventListener('click', handleCsdkLogout, false);
 uploadButton.addEventListener('click', uploadFile, false);
 getAssetsButton.addEventListener('click', getCCFolderAssets, false);
 
+
+/*
+  INTIALIZATION  
+*/
+/* Handle logout button visibility on DOM load */
 document.addEventListener('DOMContentLoaded', function(){handleCsdkLogin(true)}, false);
 
 /* Initialize the AdobeCreativeSDK object */
@@ -42,7 +50,9 @@ AdobeCreativeSDK.init({
 });
 
 
-/* Make a helper function */
+/*
+  HELPER FUNCTIONS  
+*/
 function handleCsdkLogin(hideLogoutButton) {
 
     var hideLogoutButton = hideLogoutButton || null;
@@ -56,6 +66,7 @@ function handleCsdkLogin(hideLogoutButton) {
             console.log('Logged in!');
             logoutButton.style.visibility = "visible";
         } else if (hideLogoutButton) {
+            // Called only on DOM load when csdkAuth.isAuthorized === false
             logoutButton.style.visibility = "hidden";
         } else {
             // Trigger a login
@@ -64,7 +75,6 @@ function handleCsdkLogin(hideLogoutButton) {
     });
 }
 
-/* Make a helper function */
 function handleCsdkLogout() {
 
     /* Get auth status */
@@ -83,7 +93,6 @@ function handleCsdkLogout() {
     });
 }
 
-/* Make a helper function */
 function uploadFile() {
 
     AdobeCreativeSDK.getAuthStatus(function(csdkAuth) {
@@ -141,7 +150,6 @@ function uploadFile() {
     });
 }
 
-/* Make a helper function */
 function getCCFolderAssets() {
 
     AdobeCreativeSDK.getAuthStatus(function(csdkAuth) {
@@ -220,7 +228,6 @@ function getCCFolderAssets() {
     });
 }
 
-/* Make a helper function */
 function downloadCCAssetRendition(filePath) {
 
     AdobeCreativeSDK.getAuthStatus(function(csdkAuth) {
