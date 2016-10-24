@@ -216,6 +216,7 @@ function getCCFolderAssets() {
                 var fileSize = assetArray[i].fileSize;
 
                 button.innerHTML = "Download";
+                button.className += " btn btn-primary";
                 fileNameSpan.innerHTML = " " + fileName;
                 fileSizeSpan.innerHTML = " (" + Math.round(fileSize/1024) + " KB)";
 
