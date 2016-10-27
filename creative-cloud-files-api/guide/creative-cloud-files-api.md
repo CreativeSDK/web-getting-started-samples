@@ -1,6 +1,6 @@
 # Creative Cloud Files API
 
-In addition to the Asset Browser UI Component, which provides a rich Creative Cloud UI for your users, the Creative SDK also provides headless APIs for accessing Creative Cloud Files directly. 
+In addition to the [Asset Browser UI component](), which provides a rich Creative Cloud UI experience for your users, the Creative SDK also provides headless APIs for accessing Creative Cloud Files directly. 
 
 This guide demonstrates how to use these APIs to **download** existing files from a user's Creative Cloud account, and how to **upload** new files as well.
 
@@ -33,8 +33,8 @@ Be sure to follow all instructions in the `readme`.
 ## Prerequisites
 This guide will assume that you have completed all of the steps in the following guides:
 
-- Getting Started
-- User Auth UI
+1. [Getting Started](https://creativesdk.adobe.com/docs/web/#/articles/gettingstarted/index.html)
+2. [User Auth UI](https://creativesdk.adobe.com/docs/web/#/articles/userauthui/index.html)
 
 _**Note:**_
 
@@ -68,12 +68,12 @@ function uploadFile() {
 
     AdobeCreativeSDK.getAuthStatus(function(csdkAuth) {
 
-        /* 1) Get the first element from the FileList */
-        var file = document.getElementById("fileItem").files[0];
-
-        /* 2) If the user is logged in AND their browser can upload */
+        /* 1) If the user is logged in AND their browser can upload */
         if (csdkAuth.isAuthorized) {
             if (AdobeCreativeSDK.API.Files.canUpload()) {
+
+                /* 2) Get the first element from the FileList */
+                var file = document.getElementById("fileItem").files[0];
 
                 /* 3) Make a params object to pass to Creative Cloud */
                 var params = {
@@ -90,13 +90,13 @@ function uploadFile() {
                     }
 
                     // Success
-                    console.log(result.file); 
+                    console.log(result.data); 
                 });
             }
             else {
                 console.log("Can't upload from this browser!");
             }
-        } else {
+        } else if (!csdkAuth.isAuthorized) {
             // User is not logged in, trigger a login
             handleCsdkLogin();
         }
@@ -106,7 +106,7 @@ function uploadFile() {
 
 With this code, a user who is logged in will be able to upload files to the Creative Cloud. Those files will be stored in a folder called "My CSDK App test", as set in our `params` object above.
 
-A successful upload will, in this example, trigger the `console.log(result.file)` in the code above. The `.file` object you receive here will contain data about the file you have just successfully uploaded.
+A successful upload will, in this example, trigger the `console.log(result.data)` in the code above. The `.data` object you receive here will contain data about the file you have just successfully uploaded.
 
 
 ### Error response on upload
@@ -165,7 +165,7 @@ function getCCFolderAssets() {
                 console.log(result.data);
             });
         }
-        else {
+        else if (!csdkAuth.isAuthorized) {
             // User is not logged in, trigger a login
             handleCsdkLogin();
         }
@@ -173,7 +173,7 @@ function getCCFolderAssets() {
 }
 ```
 
-When the call succeeds, the data you requested will reside in `result.data` as an array of objects containing data about each of the assets in a particular folder, including `name`, `type`, `creationDate`, `fileSize`, and more.
+When the call succeeds, the data you requested will reside in `result.data` as an array of objects containing data about each of the assets in a particular folder, including `name`, `path`, `type`, `creationDate`, `fileSize`, and more.
 
 
 <a name="download"></a>
@@ -197,7 +197,7 @@ See comments **#1-2** in the example helper function below:
 
 ```
 /* Make a helper function */
-function downloadCCAssetRendition(folderPath, fileName) {
+function downloadCCAssetRendition(filePath) {
 
     AdobeCreativeSDK.getAuthStatus(function(csdkAuth) {
 
@@ -205,7 +205,7 @@ function downloadCCAssetRendition(folderPath, fileName) {
 
             /* 1) Make a params object to pass to Creative Cloud */
             var params = {
-                path: folderPath + "/" + fileName,
+                path: filePath,
                 type: AdobeCreativeSDK.Constants.Asset.RenditionType.JPEG
             }
 
@@ -222,7 +222,7 @@ function downloadCCAssetRendition(folderPath, fileName) {
             });
 
         }
-        else {
+        else if (!csdkAuth.isAuthorized) {
             // User is not logged in, trigger a login
             handleCsdkLogin();
         }
@@ -239,12 +239,14 @@ To tie this all together, we will revisit the `getCCFolderAssets()` function tha
 console.log(result.data);
 
 /* 1) Download the first asset in the folder */
-downloadCCAssetRendition(params.path, result.data[0].name);
+downloadCCAssetRendition(result.path);
 ```
 
-Here, `result.data[0].name` is the file name of the first asset in the folder.
+Here, `result.path` is the path of the first asset in the folder.
 
-If you have followed along with the code, you should be able to press the `#get-cc-folder-assets` button to download and display the first asset in the `/files/My CSDK App test` folder in Creative Cloud.
+If you have followed along with the code, and you have uploaded an asset already, you should be able to click the `#get-cc-folder-assets` button to download and display the first asset in the `/files/My CSDK App test` folder in Creative Cloud.
+
+While this is a very simple and contrived example for the sake of demonstration, you can find a more robust example in our [GitHub repo](https://github.com/CreativeSDK/web-getting-started-samples).
 
 ### Requesting a specific rendition type
 

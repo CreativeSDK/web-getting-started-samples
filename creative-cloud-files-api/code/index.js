@@ -33,7 +33,9 @@ document.addEventListener('DOMContentLoaded', function(){handleCsdkLogin(null)},
 AdobeCreativeSDK.init({
     /* Add your Client ID (API Key) */
     clientID: CONFIG.CSDK_CLIENT_ID,
+    API: ["Asset"],
     onError: function(error) {
+        console.log(error);
         /* Handle any global or config errors */
         if (error.type === AdobeCreativeSDK.ErrorTypes.AUTHENTICATION) { 
             /* 
@@ -74,6 +76,7 @@ function handleCsdkLogin(callback) {
             }
         } else {
             // Trigger a login
+            console.log("handleCsdkLogin() else")
             AdobeCreativeSDK.login(function(){handleCsdkLogin(callback)});
         }
     });
@@ -116,14 +119,16 @@ function uploadFile() {
         }
 
         /* 2) If the user is logged in AND their browser can upload */
-        if (csdkAuth.isAuthorized && AdobeCreativeSDK.API.Files.canUpload()) {
+        //if (csdkAuth.isAuthorized && AdobeCreativeSDK.API.Files.canUpload()) {
+
+        if (csdkAuth.isAuthorized) {
 
             uploadThrobber.style.visibility = "visible";
 
             /* 3) Make a params object to pass to Creative Cloud */
             var params = {
                 data: file,
-                folder: "My CSDK App test",
+                folder: "CSDK App test",
                 overwrite: false
             }
 
@@ -139,12 +144,14 @@ function uploadFile() {
                 }
 
                 // Success
-                console.log("Uploaded file:", result.file);
+                console.log("Uploaded file:", result.data);
                 showUploadStatus("Uploaded!");
                 return;
             });
-        } else {
+        } else if (!csdkAuth.isAuthorized) {
+
             // User is not logged in, trigger a login
+            console.log("uploadFile else")
             handleCsdkLogin(uploadFile);
         }
 
@@ -172,20 +179,22 @@ function getCCFolderAssets() {
 
             /* 1) Make a params object to pass to Creative Cloud */
             var params = {
-                path: "/files/My CSDK App test" // defaults to root if not set
+                path: "/files/CSDK App test" // defaults to root if not set
             }
 
             /* 2) Request an array of assets from Creative Cloud */
             AdobeCreativeSDK.API.Files.getAssets(params, function(result) {
+                
                 folderThrobber.style.visibility = "hidden";
 
                 if (result.error) {
                     console.log(result.error);
 
-                    showErrorMessage(result.error.errorText.message);
+                    showErrorMessage(result.error.errorMsg);
                     return;
                 }
 
+                // If folder is empty
                 if (result.data.length === 0) {
                     showEmptyFolderMessage();
                     return;
@@ -195,7 +204,7 @@ function getCCFolderAssets() {
                 addDownloadButtonsToDOM(result.data);                
             });
         }
-        else {
+        else if (!csdkAuth.isAuthorized) {
             // User is not logged in, trigger a login
             handleCsdkLogin(getCCFolderAssets);
         }
@@ -222,22 +231,23 @@ function getCCFolderAssets() {
                 var fileNameSpan = document.createElement('span');
                 var fileSizeSpan = document.createElement('span');
 
+                // Get file data to be used in DOM
                 var fileName = assetArray[i].name;
                 var fileSize = assetArray[i].fileSize;
+                var filePath = assetArray[i].path;
 
+                // Add content to new elements
                 button.innerHTML = "Download";
                 button.className += " btn btn-primary";
                 fileNameSpan.innerHTML = " " + fileName;
                 fileSizeSpan.innerHTML = " (" + Math.round(fileSize/1024) + " KB)";
 
-                /* Attach click handlers to buttons */
-                (function addListener(path, fileName) {
+                // Attach click handlers to buttons
+                (function addListener(filePath) {
 
-                    var fullPath = params.path + "/" + fileName;
+                    button.addEventListener('click', function(){downloadCCAssetRendition(filePath)}, false);
 
-                    button.addEventListener('click', function(){downloadCCAssetRendition(fullPath)}, false);
-
-                })(params.path, fileName)
+                })(filePath)
 
                 // Append elements to DOM
                 div.appendChild(button);
@@ -277,7 +287,7 @@ function downloadCCAssetRendition(filePath) {
             });
 
         }
-        else {
+        else if (!csdkAuth.isAuthorized) {
             // User is not logged in, trigger a login
             handleCsdkLogin(null);
         }
