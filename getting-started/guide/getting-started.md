@@ -51,9 +51,24 @@ To register your application for Development Mode, follow these steps:
 Then fill out the Integration Info form: 
 
 1. Select "Web" as your platform
+1. Enter your Integration Name
+
+    This is your app name, and will be displayed to the user when they authorize your app during the User Auth process.
+    
 1. Enter your Default redirect URI
+
+    This should be your root domain.
+
 1. Enter a comma-separated list of redirect URIs
+
+    Used to verify that your Client ID is being used by your site and your site alone.
+
+    List any subdomains here. Note that you cannot use regex here.
+
 1. Enter a description of your app
+
+    Shown only to you when you access this Console, and to Adobe for internal purposes, including during the app approval process.
+
 1. Fill out the Captcha
 1. Click the "Next" button
 
