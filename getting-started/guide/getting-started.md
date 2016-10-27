@@ -12,7 +12,7 @@ This guide shows you how to get up and running with the Creative SDK for Web, in
 1. [Prerequisites](#prerequisites)
 1. [Registering Your Application](#register)
 1. [Adding the SDK to a New Project](#new-project)
-1. [Integrating Client Auth](#client-auth)
+1. [Initializing the SDK](#init)
 1. [What's Next?](#whats-next)
 1. [Explore the Creative SDK for Web Documentation](#explore)
 
@@ -44,10 +44,18 @@ _**Important:** Your Client ID (API Key) must be [approved for **Production Mode
 
 To register your application for Development Mode, follow these steps:
 
-1. Go to the [Adobe.io Console](adobe.io/console/)
+1. Go to the [Adobe.io Console](https://adobe.io/console/)
 1. Click "+ New Integration"
 1. Click "Adobe ID Key", then "Next"
-1. Fill out the form, then click "Next" (be sure to select "Web" as your platform)
+
+Then fill out the Integration Info form: 
+
+1. Select "Web" as your platform
+1. Enter your Default redirect URI
+1. Enter a comma-separated list of redirect URIs
+1. Enter a description of your app
+1. Fill out the Captcha
+1. Click the "Next" button
 
 _**Note:** As part of registering your application, you are given a Client ID (API Key). We will use this in the steps below._
 
@@ -55,26 +63,28 @@ _**Note:** As part of registering your application, you are given a Client ID (A
 <a name="new-project"></a>
 ## Adding the SDK to a New Project
 
-The Creative SDK for web doesn’t require that you download any special files or libraries. Instead, you simply include the Creative SDK script in your website, which will load the necessary resources:
+The Creative SDK for Web doesn’t require that you download any special files or libraries. Instead, you simply include the Creative SDK script in your website, which will load the necessary resources:
 
 ```language-html
 <body>
 
     <!-- Your HTML here -->
 
-    <script type="text/javascript" src="https://cdn-creativesdk.adobe.io/0.3/csdk.js"></script>
+    <script type="text/javascript" src="https://cdn-creativesdk.adobe.io/v1/csdk.js"></script>
 </body>
 ```
 
 The script creates an `AdobeCreativeSDK` object that you can use to access all of the functionality within the Creative SDK.
 
 
-<a name="client-auth"></a>
-## Integrating Client Auth
+<a name="init"></a>
+## Initializing the SDK
 
-Client authentication indentifies your site to Adobe. It is a required step before integrating any Creative SDK components. 
+Initialization is a required step before integrating any Creative SDK components. 
 
-You can authenticate your client with the Client ID (API Key) you have obtained from the Adobe.io Console (see the "Registering Your Application" section above).
+As part of initialization, you authenticate your client with the Client ID (API Key) you have obtained from the Adobe.io Console (see the "Registering Your Application" section above).
+
+Initialization is also where you can check for common setup errors and handle them accordingly.
 
 ### Code
 
@@ -106,11 +116,11 @@ AdobeCreativeSDK.init({
 });
 ```
 
-At this point, try reloading your web page to verify if Client Auth has been set up correctly.
+At this point, try reloading your web page to verify if Initialization has been set up correctly.
 
 ### Success
 
-You will know the setup is correct by opening your web console and verifying that you have access to the `AdobeCreativeSDK` object.
+You can check that the setup is correct by opening your web console and verifying that you have access to the `AdobeCreativeSDK` object.
 
 ### Error
 
@@ -139,4 +149,12 @@ Articles about common issues are at [help.creativesdk.com](http://help.creatives
 <a name="explore"></a>
 ## Explore the Creative SDK for Web Documentation
 
-The Creative SDK offers a number of components. Each one can be added to your app individually, as you need them, for your unique integration. See our other developer guides to learn more.
+The Creative SDK offers a number of components. Each one can be added to your app individually, as you need them, for your unique integration. 
+
+See our other developer guides to learn more:
+
+- [User Auth UI](https://creativesdk.adobe.com/docs/web/#/articles/userauthui/index.html)
+- [Creative Cloud Files API](https://creativesdk.adobe.com/docs/web/#/articles/ccfiles/index.html)
+- [Asset Browser UI]()
+- [Image Editor UI](https://creativesdk.adobe.com/docs/web/#/articles/imageeditorui/index.html)
+- [Image Editor UI Hi-Res API](https://creativesdk.adobe.com/docs/web/#/articles/highresolution/index.html)
