@@ -34,7 +34,7 @@ Be sure to follow all instructions in the `readme`.
 
 <a name="prereqs"></a>
 ## Prerequisites
-This guide will assume that you have installed all software and completed all of the steps in the Getting Started guide.
+This guide will assume that you have installed all software and completed all of the steps in the [Getting Started guide](https://creativesdk.adobe.com/docs/web/#/articles/gettingstarted/index.html).
 
 _**Important:** Your Client ID must be [approved for **Production Mode** by Adobe](https://creativesdk.zendesk.com/hc/en-us/articles/204601215-How-to-complete-the-Production-Client-ID-Request) before you release your app._
 
@@ -62,7 +62,7 @@ Assume you have the following button in your HTML:
 <button id="csdk-login">Log in to Creative Cloud</button>
 ```
 
-_**Important:** The `AdobeCreativeSDK.login()` function, must be executed as the direct result of a **user click event**, otherwise the popup will be blocked by the browser._
+_**Important:** The `AdobeCreativeSDK.login()` function, shown in use below, must be executed as the direct result of a **user click event**, otherwise the popup will be blocked by the browser._
 
 As an example, see comments **#1-4** in the code below:
 
