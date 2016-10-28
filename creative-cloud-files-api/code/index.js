@@ -27,12 +27,13 @@ fileInput.addEventListener('change', displayUploadFileName, false);
   INTIALIZATION  
 */
 /* Handle logout button visibility on DOM load */
-document.addEventListener('DOMContentLoaded', function(){handleCsdkLogin(null)}, false);
+document.addEventListener('DOMContentLoaded', function(){handleCsdkLogin(false)}, false);
 
 /* Initialize the AdobeCreativeSDK object */
 AdobeCreativeSDK.init({
     /* Add your Client ID (API Key) */
     clientID: CONFIG.CSDK_CLIENT_ID,
+    /* Add the Asset API */
     API: ["Asset"],
     onError: function(error) {
         console.log(error);
@@ -60,7 +61,9 @@ AdobeCreativeSDK.init({
 /*
   HELPER FUNCTIONS  
 */
-function handleCsdkLogin(callback) {
+function handleCsdkLogin(triggerLogin, callback) {
+
+    var triggerLogin = triggerLogin || false;
 
     /* Get auth status */
     AdobeCreativeSDK.getAuthStatus(function(csdkAuth) {
@@ -74,10 +77,11 @@ function handleCsdkLogin(callback) {
             if (callback) {
                 callback();
             }
-        } else {
+        } else if (triggerLogin) {
             // Trigger a login
             console.log("handleCsdkLogin() else")
-            AdobeCreativeSDK.login(function(){handleCsdkLogin(callback)});
+            console.log(triggerLogin)
+            AdobeCreativeSDK.login(function(){handleCsdkLogin(true, callback)});
         }
     });
 }
@@ -121,7 +125,7 @@ function uploadFile() {
         /* 2) If the user is logged in AND their browser can upload */
         //if (csdkAuth.isAuthorized && AdobeCreativeSDK.API.Files.canUpload()) {
 
-        if (csdkAuth.isAuthorized) {
+        if (csdkAuth.isAuthorized && AdobeCreativeSDK.API.Files.canUpload()) {
 
             uploadThrobber.style.visibility = "visible";
 
@@ -152,7 +156,7 @@ function uploadFile() {
 
             // User is not logged in, trigger a login
             console.log("uploadFile else")
-            handleCsdkLogin(uploadFile);
+            handleCsdkLogin(true, uploadFile);
         }
 
         function showUploadStatus(message) {
@@ -206,7 +210,8 @@ function getCCFolderAssets() {
         }
         else if (!csdkAuth.isAuthorized) {
             // User is not logged in, trigger a login
-            handleCsdkLogin(getCCFolderAssets);
+            console.log("getCCFolderAssets false")
+            handleCsdkLogin(true, getCCFolderAssets);
         }
 
         function showErrorMessage(message) {
@@ -289,7 +294,8 @@ function downloadCCAssetRendition(filePath) {
         }
         else if (!csdkAuth.isAuthorized) {
             // User is not logged in, trigger a login
-            handleCsdkLogin(null);
+            console.log("downloadCCAssetRendition else if")
+            handleCsdkLogin(true, function(){downloadCCAssetRendition(filePath)});
         }
     });
 }
