@@ -49,20 +49,20 @@ The file you want to upload to Creative Cloud can be passed as a `File` from a [
 
 Assume you have the following elements in your HTML:
 
-```
+```language-html
 <input id="fileItem" type="file">
 <button id="upload-cc-file">Upload file to Creative Cloud</button>
 ```
 
 In your JavaScript, add a click handler for the upload button:
 
-```
+```language-javascript
 document.getElementById("upload-cc-file").addEventListener('click', uploadFile, false);
 ```
 
 Then you can create your `uploadFile()` helper function. As an example, see comments **#1-4** in the code below:
 
-```
+```language-javascript
 /* Make a helper function */
 function uploadFile() {
 
@@ -117,7 +117,7 @@ Be sure to handle this response in your application so users understand what is 
 
 If you want to enable overwrites, you can do so in your `params` object for the `AdobeCreativeSDK.API.Files.upload()` call:
 
-```
+```language-javascript
 params.overwrite = true
 ```
 
@@ -129,19 +129,19 @@ You can recieve data about the assets contained in a Creative Cloud Files folder
 
 Assume you have the following element in your HTML:
 
-```
+```language-html
 <button id="get-cc-folder-assets">Get Creative Cloud Folder Assets</button>
 ```
 
 In your JavaScript, add a click handler for the upload button:
 
-```
+```language-javascript
 document.getElementById("get-cc-folder-assets").addEventListener('click', getCCFolderAssets, false);
 ```
 
 See comments **#1-2** in the example helper function below:
 
-```
+```language-javascript
 /* Make a helper function */
 function getCCFolderAssets() {
 
@@ -183,19 +183,19 @@ When you have the path of the Creative Cloud File asset that your user wants to 
 
 As a very simple example, let's alter the text in our `#get-cc-folder-assets` button:
 
-```
+```language-html
 <button id="get-cc-folder-assets">Download rendition from Creative Cloud</button>
 ```
 
 Now, assume you have the following element in your HTML:
 
-```
+```language-html
 <img id="downloaded-cc-rendition">
 ```
 
 See comments **#1-2** in the example helper function below:
 
-```
+```language-javascript
 /* Make a helper function */
 function downloadCCAssetRendition(filePath) {
 
@@ -234,7 +234,7 @@ The rendition of the file you requested in `params.path` will come back to you a
 
 To tie this all together, we will revisit the `getCCFolderAssets()` function that we made earlier. In the success handling for our `AdobeCreativeSDK.API.Files.getAssets()` call, let's call our `downloadCCAssetRendition()` function (see comment **#1** in the code below):
 
-```
+```language-javascript
 // Success, an array of assets
 console.log(result.data);
 
@@ -252,7 +252,7 @@ While this is a very simple and contrived example for the sake of demonstration,
 
 The renditions you can request from the Creative Cloud are available in this enum:
 
-```
+```language-javascript
 AdobeCreativeSDK.Constants.Asset.RenditionType
 ```
 

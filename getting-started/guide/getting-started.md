@@ -170,6 +170,6 @@ See our other developer guides to learn more:
 
 - [User Auth UI](https://creativesdk.adobe.com/docs/web/#/articles/userauthui/index.html)
 - [Creative Cloud Files API](https://creativesdk.adobe.com/docs/web/#/articles/ccfiles/index.html)
-- [Asset Browser UI]()
+- [Asset Browser UI](https://creativesdk.adobe.com/docs/web/#/articles/assetbrowser/index.html)
 - [Image Editor UI](https://creativesdk.adobe.com/docs/web/#/articles/imageeditorui/index.html)
 - [Image Editor UI Hi-Res API](https://creativesdk.adobe.com/docs/web/#/articles/highresolution/index.html)
