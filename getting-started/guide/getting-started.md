@@ -48,7 +48,7 @@ To register your application for Development Mode, follow these steps:
 1. Click "+ New Integration"
 1. Click "Adobe ID Key", then "Next"
 
-Then fill out the Integration Info form: 
+Fill out the **Integration Info** form: 
 
 1. Select "Web" as your platform
 1. Enter your Integration Name
@@ -72,6 +72,13 @@ Then fill out the Integration Info form:
 1. Fill out the Captcha
 1. Click the "Next" button
 
+On the next page, add **Integration services**:
+
+1. Click the "Add service" dropdown
+1. Select "Creative SDK"
+1. Click the "Add service" button
+1. Scroll to the bottom of the page and click the "Save" button
+
 _**Note:** As part of registering your application, you are given a Client ID (API Key). We will use this in the steps below._
 
 
@@ -89,7 +96,9 @@ The Creative SDK for Web doesn’t require that you download any special files o
 </body>
 ```
 
-The script creates an `AdobeCreativeSDK` object that you can use to access all of the functionality within the Creative SDK.
+_**Important:** As seen in the code above, the `csdk.js` script needs to be placed inside the `<body>` element, ideally just before the closing `</body>` tag so as not to delay page loading._
+
+The `csdk.js` script creates an `AdobeCreativeSDK` object that you can use to access all of the functionality within the Creative SDK.
 
 
 <a name="init"></a>
