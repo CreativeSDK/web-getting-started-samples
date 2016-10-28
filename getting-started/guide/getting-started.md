@@ -96,7 +96,9 @@ The Creative SDK for Web doesn’t require that you download any special files o
 </body>
 ```
 
-The script creates an `AdobeCreativeSDK` object that you can use to access all of the functionality within the Creative SDK.
+_**Important:** As seen in the code above, the `csdk.js` script needs to be placed inside the `<body>` element, ideally just before the closing `</body>` tag so as not to delay page loading._
+
+The `csdk.js` script creates an `AdobeCreativeSDK` object that you can use to access all of the functionality within the Creative SDK.
 
 
 <a name="init"></a>
