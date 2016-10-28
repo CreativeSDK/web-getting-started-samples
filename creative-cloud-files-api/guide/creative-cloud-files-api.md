@@ -14,6 +14,7 @@ By the end of this guide, we will have a Web page that can:
 
 1. [GitHub](#github)
 1. [Prerequisites](#prereqs)
+1. [Configuration](#config)
 1. [Uploading an asset](#upload)
 1. [Getting Creative Cloud assets](#assets)
 1. [Downloading an asset rendition](#download)
@@ -41,6 +42,24 @@ _**Note:**_
 - This component requires that the user is **logged in with their Adobe ID**.
 - _Your Client ID must be [approved for **Production Mode** by Adobe](https://creativesdk.zendesk.com/hc/en-us/articles/204601215-How-to-complete-the-Production-Client-ID-Request) before you release your app._
 
+
+<a name="config"></a>
+## Configuration
+
+In your `AdobeCreativeSDK.init()` call, add an `API` property to your configuration object, setting the value to `["Asset"]`:
+
+```language-javascript
+AdobeCreativeSDK.init({
+    clientID: '<YOUR_CLIENT_ID_HERE>',
+    /* Add the Asset API */
+    API: ["Asset"],
+    onError: function(error) {
+        ...
+    }
+});
+```
+
+This will load the dependencies required to access the Creative Cloud Files API.
 
 <a name="upload"></a>
 ## Uploading an asset
