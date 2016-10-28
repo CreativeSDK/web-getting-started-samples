@@ -45,7 +45,7 @@ Once you have a logged In user who's given you permission to access their conten
 
     var assetBrowser = new AdobeCreativeSDK.UI.AssetBrowser({
         // openType: 'embed', // options include: embed, lightbox and window. Default is lightbox
-        // element: 'domid', // use the element parameter parameter when specifying the "embed" openType
+        // element: 'domid', // use the element parameter when specifying the "embed" openType. Note: The specified dom element must exist on the page when the constructor is called.
         onOpen: function() {
             // asset browser launched
         },
