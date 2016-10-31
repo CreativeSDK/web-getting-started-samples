@@ -44,7 +44,7 @@ _**Important:** Your Client ID (API Key) must be [approved for **Production Mode
 
 To register your application for Development Mode, follow these steps:
 
-1. Go to the [Adobe.io Console](https://adobe.io/console/)
+1. Go to the <a href="https://adobe.io/console/" target="_blank">Adobe.io Console</a>
 1. Click "+ New Integration"
 1. Click "Adobe ID Key", then "Next"
 
