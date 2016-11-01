@@ -42,44 +42,7 @@ When you register your application, you are automatically approved for Developme
 
 _**Important:** Your Client ID (API Key) must be [approved for **Production Mode** by Adobe](https://creativesdk.zendesk.com/hc/en-us/articles/204601215-How-to-complete-the-Production-Client-ID-Request) before you release your app._ See the "What's Next?" section of this guide for details on submitting your app for Production Mode approval.
 
-To register your application for Development Mode, follow these steps:
-
-1. Go to the <a href="https://adobe.io/console/" target="_blank">Adobe.io Console</a>
-1. Click "+ New Integration"
-1. Click "Adobe ID Key", then "Next"
-
-Fill out the **Integration Info** form: 
-
-1. Select "Web" as your platform
-1. Enter your Integration Name
-
-    This is your app name, and will be displayed to the user when they authorize your app during the User Auth process.
-    
-1. Enter your Default redirect URI
-
-    This should be your root domain.
-
-1. Enter a comma-separated list of redirect URIs
-
-    Used to verify that your Client ID is being used by your site and your site alone.
-
-    List any subdomains here. Note that you cannot use regex here.
-
-1. Enter a description of your app
-
-    Shown only to you when you access this Console, and to Adobe for internal purposes, including during the app approval process.
-
-1. Fill out the Captcha
-1. Click the "Next" button
-
-On the next page, add **Integration services**:
-
-1. Click the "Add service" dropdown
-1. Select "Creative SDK"
-1. Click the "Add service" button
-1. Scroll to the bottom of the page and click the "Save" button
-
-_**Note:** As part of registering your application, you are given a Client ID (API Key). We will use this in the steps below._
+To register your application for Development Mode, [follow the steps in our App Registration guide](https://creativesdk.zendesk.com/hc/en-us/articles/216369343-Why-and-how-to-register-my-app-)
 
 
 <a name="new-project"></a>
