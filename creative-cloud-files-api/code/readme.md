@@ -23,21 +23,20 @@ Follow the steps below.
 
 ### In your browser
 
-1. [Register a new app for the Creative SDK](https://adobe.io/console)
-	For registration instructions, see our [Getting Started guide](https://github.com/CreativeSDK/web-getting-started-samples/blob/master/getting-started/guide/getting-started.md#register)
+1. [Register a new app for the Creative SDK](https://creativesdk.zendesk.com/hc/en-us/articles/216369343-Why-and-how-to-register-my-app-)
 	
 	Note your Client ID (API Key). You will need it soon.
 
-1. Follow the [Configuration instructions in the User Auth UI guide](https://github.com/CreativeSDK/web-getting-started-samples/blob/dev/user-auth-ui/guide/user-auth-ui.md#config)
+1. [Follow the Configuration instructions in the User Auth UI guide](https://github.com/CreativeSDK/web-getting-started-samples/blob/master/user-auth-ui/guide/user-auth-ui.md#config)
 
-	You will add the `html` file you create to the cloned repo in the next section
+	You will use the `redirectims.html` file you create in the next section
 
 
 ### In your local development environment
 
 1. `git clone` [the parent repo](https://github.com/CreativeSDK/web-getting-started-samples)
 1. `cd` into this subdirectory
-1. Add the `html` file you created in the previous section to the top-level of this subdirectory
+1. Add the `redirectims.html` file you created in the previous section to the top-level of this subdirectory
 1. Create a file called `config.js` and add the following code:
 
 	```
@@ -55,9 +54,9 @@ Follow the steps below.
 	This will add a `server.pem` file to this subdirectory.
 
 1. Start your local `https` server
-1. Access the sample site using the local URL you entered when registering your app above
+1. Access the sample site using the local URL you entered when registering your app in the previous section above
 
-	Note that your URL will need to be registered in your local `hosts` file in order to use this repo locally.
+	Note that the local URL will need to be registered in your local `hosts` file in order to use this repo locally.
 
 ### File structure
 
