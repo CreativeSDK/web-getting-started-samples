@@ -34,7 +34,7 @@ Be sure to follow all instructions in the `readme`.
 
 <a name="prereqs"></a>
 ## Prerequisites
-This guide will assume that you have installed all software and completed all of the steps in the [Getting Started guide](https://creativesdk.adobe.com/docs/web/#/articles/gettingstarted/index.html).
+This guide will assume that you have installed all software and completed all of the steps in the Getting Started guide.
 
 _**Important:** Your Client ID must be [approved for **Production Mode** by Adobe](https://creativesdk.zendesk.com/hc/en-us/articles/204601215-How-to-complete-the-Production-Client-ID-Request) before you release your app._
 

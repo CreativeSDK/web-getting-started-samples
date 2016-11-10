@@ -34,8 +34,8 @@ Be sure to follow all instructions in the `readme`.
 ## Prerequisites
 This guide will assume that you have completed all of the steps in the following guides:
 
-1. [Getting Started](https://creativesdk.adobe.com/docs/web/#/articles/gettingstarted/index.html)
-2. [User Auth UI](https://creativesdk.adobe.com/docs/web/#/articles/userauthui/index.html)
+1. Getting Started
+2. User Auth UI
 
 _**Note:**_
 
