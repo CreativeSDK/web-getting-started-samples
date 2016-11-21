@@ -45,7 +45,7 @@ In order for login to work, you'll need to store a small HTML file, named `redir
 
 To set up:
 
-1. [Download the `redirectims.html` file](https://cdn-creativesdk.adobe.io/0.3/redirectims.html)
+1. [Download the `redirectims.html` file](https://cdn-creativesdk.adobe.io/v1/redirectims.html)
 1. Add your own Client ID (API Key) to the file
 1. Upload the file to the **root** path of your web application 
     Example: `https://mydomain.com/redirectims.html`
