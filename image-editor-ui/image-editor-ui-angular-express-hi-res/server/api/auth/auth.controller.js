@@ -1,5 +1,5 @@
 var http = require('http');
-var uuid    = require('node-uuid');
+//var uuid    = require('node-uuid');
 var crypto  = require('crypto');
 
 var apiKeys = require('../../apiKeys.js');
@@ -29,7 +29,8 @@ function getAuthObj() {
 }
 
 function getSalt() {
-	return uuid.v4();
+	//return uuid.v4();
+	return crypto.randomBytes(20).toString('hex');
 }
 
 function getUnixTimestamp() {
