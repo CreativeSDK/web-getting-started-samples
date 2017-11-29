@@ -18,13 +18,13 @@ In addition to these guidelines, please make sure that your app is in accordance
 4.  Obtain necessary consent or provide necessary disclosure as relates to using information collected from your users.
 5.  Make all required payouts to third parties from in-product purchases or in-product revenue, and submit all necessary reporting.
 6.  If your app contains content submitted or provided by third parties (or user-generated content):
-    a. In the United States, you must comply with Digital Millennium Copyright Act, including the following:
-    *   Designate an agent to receive notices of infringement claims.
-    *   Establish repeat infringer termination policy.
-    *   Provide and uphold a take-down policy.
-    *   Provide and uphold a process for counter claims.
-        b. Remain compliant with all necessary infringement and copyright laws of other countries.
-        c. We would also suggest that you create a community guideline to remind your users on being respectful of others.
+    * In the United States, you must comply with Digital Millennium Copyright Act, including the following:
+    	* Designate an agent to receive notices of infringement claims.
+    	* Establish repeat infringer termination policy.
+    	* Provide and uphold a take-down policy.
+    	* Provide and uphold a process for counter claims.
+    * Remain compliant with all necessary infringement and copyright laws of other countries.
+    * We would also suggest that you create a community guideline to remind your users on being respectful of others.
 7.  Don't share with us information collected from users under the age of 13.
 8.  Don't share with us personal information collected from users of your app.
 9.  Products marketed and meant for usage by those under the age of 13 must comply with the U.S. Children's Online Privacy Protection Act.
