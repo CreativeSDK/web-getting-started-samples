@@ -1,4 +1,4 @@
-# Creative SDK Branding 
+# Branding guidelines
 
 Thank you for downloading the Creative SDK. You may use the provided assets to highlight your application’s integration with Adobe Creative Cloud.
 
@@ -11,7 +11,7 @@ We recommend that these assets feel at home in your app, so you may customize th
 **Things not to do:**
 * Please do not include Creative Cloud, Photoshop or anything similar in the name of your app.
 * Please do not feature the Creative Cloud connected badge, Creative Cloud icon, Behance icon or Adobe logo larger than your own logo.
-* Please do not stretch, redraw, or otherwise alter the shape of the assets,letterforms within the icons, or use a different typeface to replace the 2-letter mnemonic for the icons.
+* Please do not stretch, redraw, or otherwise alter the shape of the assets, letterforms within the icons, or use a different typeface to replace the 2-letter mnemonic for the icons.
 
 ## Using the Creative Cloud Badge and Brand
 
@@ -171,7 +171,7 @@ When indicating sending to the desktop version of Illustrator, always use the ph
 **Adobe Photoshop Lightroom CC:**
 
 ![](https://aviarystatic.s3.amazonaws.com/creativesdk/branding/lightroom_24.svg) ![](https://aviarystatic.s3.amazonaws.com/creativesdk/branding/lightroom_24_hex.svg)  
-Adobe Lightroom icon for use within application 
+Adobe Lightroom icon for use within application
 [Download the Adobe Lightroom icons (.svg)](https://aviarystatic.s3.amazonaws.com/creativesdk/branding/assets/LR_icons.zip)
 
 You may use the Lightroom icons as a button to indicate connecting to or opening a photo from the users Adobe Photoshop Lightroom library.

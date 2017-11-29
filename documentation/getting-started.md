@@ -1,6 +1,6 @@
 # Getting started with the Creative SDK for Web
 
-The Creative SDK lets you build applications that integrate with the Adobe Creative Cloud and leverage its power to benefit your users. 
+The Creative SDK lets you build applications that integrate with the Adobe Creative Cloud and leverage its power to benefit your users.
 
 From letting your users import from and save to their Creative Cloud storage, to offering innovative creative tools for your application, the Creative SDK will help you expand the features of your app with the Adobe Creative Cloud platform.
 
@@ -20,7 +20,7 @@ This guide shows you how to get up and running with the Creative SDK for Web, in
 <a name="github"></a>
 ## GitHub
 
-You can find companion GitHub repos for the Creative SDK developer guides [on the Creative SDK GitHub organization](https://github.com/CreativeSDK/web-getting-started-samples). 
+You can find companion GitHub repos for the Creative SDK developer guides [on the Creative SDK GitHub organization](https://github.com/CreativeSDK/web-getting-started-samples).
 
 Be sure to follow all instructions in the `readme`.
 
@@ -38,7 +38,7 @@ Be sure to follow all instructions in the `readme`.
 <a name="register"></a>
 ## Registering Your Application
 
-When you register your application, you are automatically approved for Development Mode. 
+When you register your application, you are automatically approved for Development Mode.
 
 _**Important:** Your Client ID (API Key) must be [approved for **Production Mode** by Adobe](https://creativesdk.zendesk.com/hc/en-us/articles/204601215-How-to-complete-the-Production-Client-ID-Request) before you release your app._ See the "What's Next?" section of this guide for details on submitting your app for Production Mode approval.
 
@@ -67,7 +67,7 @@ The `csdk.js` script creates an `AdobeCreativeSDK` object that you can use to ac
 <a name="init"></a>
 ## Initializing the SDK
 
-Initialization is a required step before integrating any Creative SDK components. 
+Initialization is a required step before integrating any Creative SDK components.
 
 As part of initialization, you authenticate your client with the Client ID (API Key) you have obtained from the Adobe.io Console (see the "Registering Your Application" section above).
 
@@ -84,19 +84,19 @@ AdobeCreativeSDK.init({
     clientID: '<YOUR_CLIENT_ID_HERE>',
     onError: function(error) {
         /* 3) Handle any global or config errors */
-        if (error.type === AdobeCreativeSDK.ErrorTypes.AUTHENTICATION) { 
-            /* 
-            	Note: this error will occur when you try 
-                to launch a component without checking if 
-            	the user has authorized your app. 
-            	
-            	From here, you can trigger 
+        if (error.type === AdobeCreativeSDK.ErrorTypes.AUTHENTICATION) {
+            /*
+            	Note: this error will occur when you try
+                to launch a component without checking if
+            	the user has authorized your app.
+
+            	From here, you can trigger
                 AdobeCreativeSDK.loginWithRedirect().
             */
             console.log('You must be logged in to use the Creative SDK');
-        } else if (error.type === AdobeCreativeSDK.ErrorTypes.GLOBAL_CONFIGURATION) { 
+        } else if (error.type === AdobeCreativeSDK.ErrorTypes.GLOBAL_CONFIGURATION) {
             console.log('Please check your configuration');
-        } else if (error.type === AdobeCreativeSDK.ErrorTypes.SERVER_ERROR) { 
+        } else if (error.type === AdobeCreativeSDK.ErrorTypes.SERVER_ERROR) {
             console.log('Oops, something went wrong');
         }
     }
@@ -119,11 +119,11 @@ If you get an `XMLHttpRequest` error due to `'Access-Control-Allow-Origin'`, the
 
 ### Terms of Use (TOU) and Branding
 
-See the guidelines in [Using the Creative Cloud Badge and Brand](https://creativesdk.adobe.com/docs/android/#/brandguidelines/index.html) and the [Terms of Use](http://wwwimages.adobe.com/content/dam/Adobe/en/legal/servicetou/Creative_SDK-en_US.pdf). 
+Adobe must review all applications that use the Creative SDK before they are released. See the Creative SDK Branding guidelines and the terms of use.
 
 ### Submit Your Application for Review
 
-Adobe must review all applications that use the Creative SDK before they are released. 
+Adobe must review all applications that use the Creative SDK before they are released.
 
 [Instructions for submitting your app for review are here](https://creativesdk.zendesk.com/hc/en-us/articles/204601215-How-to-complete-the-Production-Client-ID-Request).
 
@@ -136,7 +136,7 @@ Articles about common issues are at [help.creativesdk.com](http://help.creatives
 <a name="explore"></a>
 ## Explore the Creative SDK for Web Documentation
 
-The Creative SDK offers a number of components. Each one can be added to your app individually, as you need them, for your unique integration. 
+The Creative SDK offers a number of components. Each one can be added to your app individually, as you need them, for your unique integration.
 
 See our other developer guides to learn more:
 
