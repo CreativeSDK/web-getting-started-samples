@@ -1,6 +1,6 @@
 # Web: Getting Started Samples
 
-This contains Getting Started sample code to accompany the Web developer guides on [creativesdk.com](http://creativesdk.com).
+This contains Getting Started sample code to accompany the Web developer guides on [Adobe I/O](https://www.adobe.io/apis/creativecloud/creativesdk.html).
 
 ### Contents
 
@@ -21,7 +21,7 @@ The instructions for setting up the sample code found in each subdirectory can b
 
 ### Developer portal
 
-[Visit our Web developer portal](https://creativesdk.adobe.com/docs/web/#/index.html) for guides, references, and more.
+[Visit Adobe I/O](https://creativesdk.adobe.com/docs/web/#/index.html) for guides, references, and more.
 
 
 <a name="contributing"></a>
