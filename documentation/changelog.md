@@ -1,19 +1,21 @@
-# Creative SDK v1.0.1
+# Changelog
+
+## Creative SDK v1.0.1
 November 27, 2017
 
 The Image Editor component is deprecated and no longer supported. [See the Creative SDK blog for more details](https://blog.creativesdk.com/2017/09/important-update-to-the-creative-sdk-end-of-support-for-the-image-editor-ui-color-ui-market-browser-and-labs-components/).
 
 
-# Creative SDK v1.0.0
+## Creative SDK v1.0.0
 November 2, 2016
 
-## General
+### General
 
 This is big release for Web! We have a number of components coming out of beta and ready for you to use.
 
 See our Getting Started guide to learn more about SDK Initialization and other basic setup requirements for using the Creative SDK.
 
-## User Auth UI
+### User Auth UI
 
 Most Creative SDK components require an authenticated user. Before launching the components, you’ll need to ask your user for permission to access their Creative Cloud content. You do this by ensuring that the user is logged in with their Adobe ID and has granted you access.
 
@@ -21,25 +23,25 @@ The User Auth UI component provides the user with a familiar Adobe ID login scre
 
 See our User Auth UI guide to learn more.
 
-## Creative Cloud Files API
+### Creative Cloud Files API
 
 In addition to the Asset Browser UI component, which provides a rich Creative Cloud UI for your users, the Creative SDK also provides headless APIs for accessing Creative Cloud Files directly.
 
 See our Creative Cloud Files API guide to learn more.
 
-## Asset Browser UI
+### Asset Browser UI
 
 With the Asset Browser UI component, your users will see a familiar interface for the Creative Cloud that lets them view and select their Creative Cloud Files, Lightroom Photos, Photoshop Mixes, Sketches, and more.
 
 See our Asset Browser UI guide to learn more.
 
-## Creative Cloud Libraries API
+### Creative Cloud Libraries API
 
 In addition to the Asset Browser UI component, which provides a rich Creative Cloud UI for your users, the Creative SDK also provides headless APIs for accessing Creative Cloud Libraries directly.
 
 A guide for the Creative Cloud Libraries API is coming soon. This component is available as `AdobeCreativeSDK.API.Libraries`.
 
-## Creative Cloud Photos API
+### Creative Cloud Photos API
 
 In addition to the Asset Browser UI component, which provides a rich Creative Cloud UI for your users, the Creative SDK also provides headless APIs for accessing Creative Cloud Photos (that is, photos managed with Lightroom and synced to the Creative Cloud) directly.
 
@@ -47,7 +49,7 @@ A guide for the Creative Cloud Photos API is coming soon. This component is avai
 
 
 
-# Creative SDK v4.3.2
+## Creative SDK v4.3.2
 June 6, 2016
 
 - Deprecates non-https endpoints.
@@ -56,14 +58,14 @@ June 6, 2016
 - Fixes `onClose(status)` so that status accurately reflects edit state.
 
 
-# Creative SDK v4.3.1
+## Creative SDK v4.3.1
 April 12, 2016
 
 - Fixes issue related to unsaved changes modal.
 - Fixes “apply" error.
 
 
-# Creative SDK v4.3.0
+## Creative SDK v4.3.0
 January 25, 2016
 
 **Important:** If you're updating from v2, you'll need to point your integration at [http://feather.aviary.com/imaging/v3/editor.js](http://feather.aviary.com/imaging/v3/editor.js).
@@ -75,7 +77,7 @@ January 25, 2016
 - Miscellaneous bug fixes.
 
 
-# Creative SDK v4.2.0
+## Creative SDK v4.2.0
 June 10, 2015
 
 **Important:** Prior to July 24th, you can use access this new SDK version by pointing your integration at [http://feather.aviary.com/imaging/v2/editor.js](http://feather.aviary.com/imaging/v2/editor.js). After that date, all v1 integrations will automatically redirect to this new version. If you need to remain on an earlier version of the SDK for any reason, please [let us know](https://creativesdk.zendesk.com/hc/en-us/requests/new) and we can discuss your options.
@@ -90,7 +92,7 @@ June 10, 2015
 - Miscellaneous bug fixes.
 
 
-# Creative SDK v4.1.1
+## Creative SDK v4.1.1
 March 23, 2015
 
 - Enhancement to speed up Brightness, Contrast & Saturation for WebGL.
@@ -99,7 +101,7 @@ March 23, 2015
 - Miscellaneous bug fixes.
 
 
-# Creative SDK v4.1.0
+## Creative SDK v4.1.0
 February 9, 2015
 
 - Huge update to enable WebGL image processing! (Currently only enabled for Chrome & Firefox)
@@ -107,7 +109,7 @@ February 9, 2015
 - Miscellaneous bug fixes.
 
 
-# Creative SDK v4.0.1
+## Creative SDK v4.0.1
 January 8, 2015
 
 - Fixes Mixed Content error when saving low resolution images over HTTPS.
@@ -116,7 +118,7 @@ January 8, 2015
 - More descriptive onError message when the url parameter is passed to the configuration without a protocol.
 
 
-# Creative SDK v4.0.0
+## Creative SDK v4.0.0
 December 15, 2014
 
 - First release on creativesdk.com

@@ -119,13 +119,16 @@ If you get an `XMLHttpRequest` error due to `'Access-Control-Allow-Origin'`, the
 
 ### Terms of Use (TOU) and Branding
 
-Adobe must review all applications that use the Creative SDK before they are released. See the Creative SDK Branding guidelines and the terms of use.
+See the guidelines in the Branding Guidelines.
+
+All use is covered by our Terms of Use as found on the [Adobe I/O Console](https://console.adobe.io/).
+
 
 ### Submit Your Application for Review
 
 Adobe must review all applications that use the Creative SDK before they are released.
 
-[Instructions for submitting your app for review are here](https://creativesdk.zendesk.com/hc/en-us/articles/204601215-How-to-complete-the-Production-Client-ID-Request).
+See the App Submission Guidelines for more information.
 
 
 ### Troubleshooting and Support
