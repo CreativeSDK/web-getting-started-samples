@@ -75,7 +75,7 @@ Initialization is also where you can check for common setup errors and handle th
 
 ### Code
 
-See comments **#1-4** in the code below:
+See comments **#1-3** in the code below:
 
 ```language-javascript
 /* 1) Initialize the AdobeCreativeSDK object */
