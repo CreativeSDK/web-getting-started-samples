@@ -144,7 +144,5 @@ The Creative SDK offers a number of components. Each one can be added to your ap
 See our other developer guides to learn more:
 
 - User Auth UI
-- Creative Cloud Files API
 - Asset Browser UI
-- Image Editor UI
-- Image Editor UI Hi-Res API
+- Creative Cloud Files API

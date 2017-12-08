@@ -1,6 +1,6 @@
-# Asset Browser Integration Guide
+# Asset Browser UI
 
-The Creative SDK provides a convenient UI for accessing all of a user’s creative assets stored in the Creative Cloud, including files, photos, libraries, and mobile creations. 
+The Creative SDK provides a convenient UI for accessing all of a user’s creative assets stored in the Creative Cloud, including files, photos, libraries, and mobile creations.
 
 This guide will demonstrate how to use the Asset Browser UI component to enable your users to access their files stored in the Creative Cloud.
 
@@ -74,7 +74,7 @@ Once you have a logged In user who's given you permission to access their conten
 Once the end user chooses their asset(s) and dismisses the Asset Browser, you'll get back an array of Asset objects. Each asset contains a `type` property that can be used to determine which getRendition() call to make to get the actual image data back from the Creative Cloud.
 
 ### Example
-    
+
     // ...
     , function(response) {
         if (response.error) {
@@ -100,72 +100,72 @@ Once the end user chooses their asset(s) and dismisses the Asset Browser, you'll
         // Use the assetType parameter to determine which getRendition() method to use
         if(asset.assetType == AdobeCreativeSDK.Constants.AssetType.FILES) {
             AdobeCreativeSDK.API.Files.getRendition({
-                path: asset.path, 
+                path: asset.path,
                 type: assetType,
                 size: assetSize
             }, callback);
         }
         else if(asset.assetType == AdobeCreativeSDK.Constants.AssetType.LIBRARY_ASSETS) {
             AdobeCreativeSDK.API.Libraries.getRendition({
-                itemId: asset.id, 
-                libraryId:asset.libraryId, 
+                itemId: asset.id,
+                libraryId:asset.libraryId,
                 type: assetType,
                 size: assetSize
             }, callback);
         }
         else if(asset.assetType == AdobeCreativeSDK.Constants.AssetType.PHOTOS) {
             AdobeCreativeSDK.API.Photos.getRendition({
-                catalogId: asset.catalogId, 
-                collectionId: asset.collectionId, 
-                photoId: asset.id, 
+                catalogId: asset.catalogId,
+                collectionId: asset.collectionId,
+                photoId: asset.id,
                 size: photoSize
             }, callback);
         }
         else if(asset.assetType == AdobeCreativeSDK.Constants.AssetType.ILLUSTRATOR_DRAW) {
             AdobeCreativeSDK.API.Draw.getRendition({
-                fileId: asset.fileId, 
-                pageId: asset.id, 
-                type: assetType, 
+                fileId: asset.fileId,
+                pageId: asset.id,
+                type: assetType,
                 size: assetSize
             }, callback);
         }
         else if( asset.assetType == AdobeCreativeSDK.Constants.AssetType.PHOTOSHOP_SKETCH) {
             AdobeCreativeSDK.API.Sketch.getRendition({
-                fileId: asset.fileId, 
-                pageId: asset.id, 
-                type: assetType, 
+                fileId: asset.fileId,
+                pageId: asset.id,
+                type: assetType,
                 size: assetSize
             }, callback);
         }
         else if(asset.assetType == AdobeCreativeSDK.Constants.AssetType.PHOTOSHOP_MIX) {
             AdobeCreativeSDK.API.PSMix.getRendition({
-                fileId: asset.fileId, 
-                pageId: asset.id, 
-                type: assetType, 
+                fileId: asset.fileId,
+                pageId: asset.id,
+                type: assetType,
                 size: assetSize
             }, callback);
         }
         else if(asset.assetType == AdobeCreativeSDK.Constants.AssetType.COMP_CC) {
             AdobeCreativeSDK.API.Comp.getRendition({
-                fileId: asset.fileId, 
-                pageId: asset.id, 
-                type: assetType, 
+                fileId: asset.fileId,
+                pageId: asset.id,
+                type: assetType,
                 size: assetSize
             }, callback);
         }
         else if(asset.assetType == AdobeCreativeSDK.Constants.AssetType.ILLUSTRATOR_LINE) {
             AdobeCreativeSDK.API.Line.getRendition({
-                fileId: asset.fileId, 
-                pageId: asset.id, 
-                type: assetType, 
+                fileId: asset.fileId,
+                pageId: asset.id,
+                type: assetType,
                 size: assetSize
             }, callback);
         }
         else if(asset.assetType == AdobeCreativeSDK.Constants.AssetType.PREMIERE_CLIP) {
             AdobeCreativeSDK.API.Clip.getRendition({
-                fileId: asset.fileId, 
-                pageId: asset.id, 
-                type: assetType, 
+                fileId: asset.fileId,
+                pageId: asset.id,
+                type: assetType,
                 size: assetSize
             }, callback);
         }
@@ -183,14 +183,14 @@ Once the end user chooses their asset(s) and dismisses the Asset Browser, you'll
                 API: ["Asset"],
                 onError: function(error) {
                     // Handle any global or config errors here
-                    if (error.type === AdobeCreativeSDK.ErrorTypes.AUTHENTICATION) { 
+                    if (error.type === AdobeCreativeSDK.ErrorTypes.AUTHENTICATION) {
                         // Note: this error will occur when you try and launch the asset browser without checking if the user has authorized your app. From here, you can trigger AdobeCreativeSDK.loginWithRedirect().
                         console.log('You must be logged in to use the Creative SDK');
-                    } else if (error.type === AdobeCreativeSDK.ErrorTypes.GLOBAL_CONFIGURATION) { 
+                    } else if (error.type === AdobeCreativeSDK.ErrorTypes.GLOBAL_CONFIGURATION) {
                         console.log('Please check your configuration');
-                    } else if (error.type === AdobeCreativeSDK.ErrorTypes.COMPONENT_CONFIGURATION) { 
-                        console.log('Please check your component configuration'); 
-                    } else if (error.type === AdobeCreativeSDK.ErrorTypes.SERVER_ERROR) { 
+                    } else if (error.type === AdobeCreativeSDK.ErrorTypes.COMPONENT_CONFIGURATION) {
+                        console.log('Please check your component configuration');
+                    } else if (error.type === AdobeCreativeSDK.ErrorTypes.SERVER_ERROR) {
                         console.log('Oops, something went wrong');
                     }
                 }
@@ -242,7 +242,7 @@ Once the end user chooses their asset(s) and dismisses the Asset Browser, you'll
                     }
                 });
             }
-           
+
             function getRendition(asset, callback) {
                 var assetType = AdobeCreativeSDK.Constants.Asset.RenditionType.PNG;
                 var assetSize = 300;
@@ -251,72 +251,72 @@ Once the end user chooses their asset(s) and dismisses the Asset Browser, you'll
                 // Use the assetType parameter to determine which getRendition() method to use
                 if(asset.assetType == AdobeCreativeSDK.Constants.AssetType.FILES) {
                     AdobeCreativeSDK.API.Files.getRendition({
-                        path: asset.path, 
+                        path: asset.path,
                         type: assetType,
                         size: assetSize
                     }, callback);
                 }
                 else if(asset.assetType == AdobeCreativeSDK.Constants.AssetType.LIBRARY_ASSETS) {
                     AdobeCreativeSDK.API.Libraries.getRendition({
-                        itemId: asset.id, 
-                        libraryId:asset.libraryId, 
+                        itemId: asset.id,
+                        libraryId:asset.libraryId,
                         type: assetType,
                         size: assetSize
                     }, callback);
                 }
                 else if(asset.assetType == AdobeCreativeSDK.Constants.AssetType.PHOTOS) {
                     AdobeCreativeSDK.API.Photos.getRendition({
-                        catalogId: asset.catalogId, 
-                        collectionId: asset.collectionId, 
-                        photoId: asset.id, 
+                        catalogId: asset.catalogId,
+                        collectionId: asset.collectionId,
+                        photoId: asset.id,
                         size: photoSize
                     }, callback);
                 }
                 else if(asset.assetType == AdobeCreativeSDK.Constants.AssetType.ILLUSTRATOR_DRAW) {
                     AdobeCreativeSDK.API.Draw.getRendition({
-                        fileId: asset.fileId, 
-                        pageId: asset.id, 
-                        type: assetType, 
+                        fileId: asset.fileId,
+                        pageId: asset.id,
+                        type: assetType,
                         size: assetSize
                     }, callback);
                 }
                 else if( asset.assetType == AdobeCreativeSDK.Constants.AssetType.PHOTOSHOP_SKETCH) {
                     AdobeCreativeSDK.API.Sketch.getRendition({
-                        fileId: asset.fileId, 
-                        pageId: asset.id, 
-                        type: assetType, 
+                        fileId: asset.fileId,
+                        pageId: asset.id,
+                        type: assetType,
                         size: assetSize
                     }, callback);
                 }
                 else if(asset.assetType == AdobeCreativeSDK.Constants.AssetType.PHOTOSHOP_MIX) {
                     AdobeCreativeSDK.API.PSMix.getRendition({
-                        fileId: asset.fileId, 
-                        pageId: asset.id, 
-                        type: assetType, 
+                        fileId: asset.fileId,
+                        pageId: asset.id,
+                        type: assetType,
                         size: assetSize
                     }, callback);
                 }
                 else if(asset.assetType == AdobeCreativeSDK.Constants.AssetType.COMP_CC) {
                     AdobeCreativeSDK.API.Comp.getRendition({
-                        fileId: asset.fileId, 
-                        pageId: asset.id, 
-                        type: assetType, 
+                        fileId: asset.fileId,
+                        pageId: asset.id,
+                        type: assetType,
                         size: assetSize
                     }, callback);
                 }
                 else if(asset.assetType == AdobeCreativeSDK.Constants.AssetType.ILLUSTRATOR_LINE) {
                     AdobeCreativeSDK.API.Line.getRendition({
-                        fileId: asset.fileId, 
-                        pageId: asset.id, 
-                        type: assetType, 
+                        fileId: asset.fileId,
+                        pageId: asset.id,
+                        type: assetType,
                         size: assetSize
                     }, callback);
                 }
                 else if(asset.assetType == AdobeCreativeSDK.Constants.AssetType.PREMIERE_CLIP) {
                     AdobeCreativeSDK.API.Clip.getRendition({
-                        fileId: asset.fileId, 
-                        pageId: asset.id, 
-                        type: assetType, 
+                        fileId: asset.fileId,
+                        pageId: asset.id,
+                        type: assetType,
                         size: assetSize
                     }, callback);
                 }
