@@ -13,6 +13,7 @@ This guide shows you how to get up and running with the Creative SDK for Web, in
 1. [Registering Your Application](#register)
 1. [Adding the SDK to a New Project](#new-project)
 1. [Initializing the SDK](#init)
+1. [Setting up SSL and HTTPs for local development](#ssl)
 1. [What's Next?](#whats-next)
 1. [Explore the Creative SDK for Web Documentation](#explore)
 
@@ -112,6 +113,56 @@ You can check that the setup is correct by opening your web console and verifyin
 ### Error
 
 If you get an `XMLHttpRequest` error due to `'Access-Control-Allow-Origin'`, there is likely an issue with your SSL setup (as noted in the "Prerequisites" section of this guide, SSL is required).
+
+<a name="ssl"></a>
+## Setting up SSL and HTTPs for local development
+
+Given the [increasing emphasis on SSL](https://motherboard.vice.com/read/google-will-soon-shame-all-websites-that-are-unencrypted-chrome-https), many production sites already serve content via HTTPS. CSDK is not a exception - all CSDK components require that any website integrating with the SDK utilizes SSL. Here is a quick step-by-step guide on creating a simple local HTTPS server.
+
+### Set up SSL
+
+If you do not already have an SSL certificate, you will need to create one. One way to create one is by installing [the OpenSSL CLI](https://www.openssl.org/source/).
+After installation, you can generate your own SSL certificate like this:
+
+`$ openssl req -new -x509 -keyout server.pem -out server.pem -days 365 -nodes`
+
+This will add a `server.pem` file to your current directory.
+Since this is a self-signed certificate, browsers will not trust it, but it will be fine for our local development needs.
+
+### Start a local HTTPS server
+
+There are many ways to accomplish this.
+If you have Python installed (all Macs do by default), you can create a simple HTTPS server in just a few lines of code with Python.
+For example, create a file called `https-server.py`, then add the following code:
+
+```
+import BaseHTTPServer, SimpleHTTPServer
+import ssl
+import sys
+DOMAIN = sys.argv[1];
+PORT = int(sys.argv[2]);
+httpd = BaseHTTPServer.HTTPServer((DOMAIN, PORT), SimpleHTTPServer.SimpleHTTPRequestHandler)
+httpd.socket = ssl.wrap_socket (httpd.socket, certfile='server.pem', server_side=True)
+httpd.serve_forever()
+```
+
+You can run this HTTPS server from the command line like this:
+
+```
+$ python https-server.py [domain] [port]
+```
+
+Note that using Python is just one example. You could also make an HTTPS server with NodeJS or your language of choice.
+
+### Access the site locally
+
+Using our examples from above, if you started the HTTPS server with domain `localhost` on port `8080`, you will be able to access the site locally by going to this URL:
+
+```
+https://localhost:8080
+```
+
+Note that your browser will likely warn you that the site is insecure because the SSL certificate is self-signed. This warning is expected, and you can ignore it for local development.
 
 
 <a name="whats-next"></a>
