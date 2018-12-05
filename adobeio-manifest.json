@@ -1,0 +1,77 @@
+{  
+   "name":"web-getting-started-samples-manifest",
+   "version":"1.0.0",
+   "description":"Creative SDK for Web",
+   "author":"Emily Walpole",
+   "view_type":"mdbook",
+   "meta_keywords":"adobe i/o,creative sdk, web",
+   "meta_description":"WEB SDK - Build Creative Cloud connected apps for the browser with Creative SDK for Web.",
+   "publish_date":"12/04/2018",
+   "show_edit_github_banner":false,
+   "base_path":"https://raw.githubusercontent.com/CreativeSDK/web-getting-started-samples/master/documentation",
+   "pages":[  
+      {  
+         "importedFileName":"adobe-creative-sdk-for-web",
+         "pages":[  
+            {  
+               "importedFileName":"getting-started",
+               "pages":[  
+
+               ],
+               "path":"getting-started.md",
+               "title":"Getting Started"
+            },
+            {  
+               "importedFileName":"app-submission-guidelines",
+               "pages":[  
+
+               ],
+               "path":"app-submission-guidelines.md",
+               "title":"App Submission Guidelines"
+            },
+            {  
+               "importedFileName":"asset-browser-ui",
+               "pages":[  
+
+               ],
+               "path":"asset-browser-ui.md",
+               "title":"Asset Browser UI"
+            },
+            {  
+               "importedFileName":"branding-guidelines",
+               "pages":[  
+
+               ],
+               "path":"branding-guidelines.md",
+               "title":"Branding Guidelines"
+            },
+            {  
+               "importedFileName":"creative-cloud-files-api",
+               "pages":[  
+
+               ],
+               "path":"creative-cloud-files-api.md",
+               "title":"Creative Cloud Files API"
+            },
+            {  
+               "importedFileName":"user-auth-ui",
+               "pages":[  
+
+               ],
+               "path":"user-auth-ui.md",
+               "title":"User Auth UI"
+            },
+            {  
+               "importedFileName":"changelog",
+               "pages":[  
+
+               ],
+               "path":"changelog.md",
+               "title":"Changelog"
+            }
+         ],
+         "path":"adobe-creative-sdk-for-web.md",
+         "title":"Documentation Home: Creative SDK for Web"
+      }
+   ]
+}
