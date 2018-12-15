@@ -1,9 +1,6 @@
 # Web: Getting Started Samples
 
-This will contain Getting Started sample apps to accompany the Web developer guides on [creativesdk.com](http://creativesdk.com).
-
-Stay tuned for updates as we build out this library of samples!
-
+This contains Getting Started sample code to accompany the Web developer guides on [creativesdk.com](http://creativesdk.com).
 
 ### Contents
 
@@ -15,11 +12,18 @@ Stay tuned for updates as we build out this library of samples!
 <a name="how-to"></a>
 ## How to use
 
-**TL;DR: Your first step should be to go to the app subdirectory in this repo that you are interested in, and follow the instructions in that subdirectory's readme.**
+This repo contains multiple code samples, organized like this:
 
-This repo contains multiple example web apps. Each subdirectory in the repo is an example app that shows you a basic way to use the Creative SDK for Web. Further details can be found on [creativesdk.com](http://creativesdk.com).
+- /component
+	- /code
+	- /guide
+- /component
+	- /code
+	- /guide
 
-The instructions for setting up each app can be found in the readme in its subdirectory.
+Each component directory contains sample code and a developer guide.
+
+**The instructions for setting up the sample code can be found in `/code/readme.md`.**
 
 <a name="resources"></a>
 ## More resources for the Creative SDK

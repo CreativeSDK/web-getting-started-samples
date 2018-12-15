@@ -1,0 +1,24 @@
+#folder-contents {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+#folder-throbber, #rendition-throbber, #upload-throbber {
+	visibility: hidden;
+}
+
+#csdk-logout {
+	visibility: hidden;
+}
+
+#file-item {
+	display: none;
+}
+
+img {
+	max-width: 100%;
+}
+
+.btn {
+	margin-bottom: 10px;
+}

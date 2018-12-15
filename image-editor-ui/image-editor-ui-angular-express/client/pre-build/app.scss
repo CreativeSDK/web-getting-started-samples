@@ -1,0 +1,15 @@
+* {
+  box-sizing: border-box;
+}
+
+@mixin clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+// Add your fractal Sass files below!
+@import 'navbar/navbar';
+@import 'home/home';
